@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오사카 여행 2026 — 3박 4일 완벽 가이드</title>
+  <meta name="description" content="2026년 5월 오사카 3박 4일 여행 일정. 유니버설 스튜디오 재팬, 교토 당일치기, 도톤보리, 쇼핑 완벽 가이드." />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <!-- Iconify -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.3.0/dist/iconify-icon.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            midnight: '#0a0a1a',
+            ink: '#111128',
+            slate: {
+              850: '#161630',
+              750: '#1e1e42',
+            },
+            sakura: {
+              50: '#fef1f7',
+              100: '#fde4f0',
+              200: '#fdc9e3',
+              300: '#fda4cf',
+              400: '#f472b6',
+              500: '#ec4899',
+              600: '#db2777',
+            },
+            koi: {
+              50: '#fff8ed',
+              100: '#ffefcf',
+              200: '#ffdda0',
+              300: '#ffc566',
+              400: '#ffa726',
+              500: '#f59e0b',
+              600: '#d97706',
+            },
+            wisteria: {
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Pretendard', system-ui, sans-serif; background: #0a0a1a; color: #e2e8f0; }
+
+    /* 글래스 모피즘 */
+    .glass { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .glass-strong { background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+
+    /* 그라디언트 텍스트 */
+    .gradient-text { background: linear-gradient(135deg, #f472b6, #ffa726, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-sakura { background: linear-gradient(135deg, #fda4cf, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-koi { background: linear-gradient(135deg, #ffc566, #ffa726); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* 스크롤 애니메이션 */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* 호버 효과 */
+    .card-hover { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 60px -12px rgba(244, 114, 182, 0.12); }
+
+    /* 커스텀 스크롤바 */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a1a; }
+    ::-webkit-scrollbar-thumb { background: rgba(244, 114, 182, 0.3); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(244, 114, 182, 0.5); }
+
+    /* 타임라인 */
+    .timeline-line { position: absolute; left: 1.75rem; top: 2.5rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, rgba(244, 114, 182, 0.4), rgba(167, 139, 250, 0.2), transparent); }
+    @media (min-width: 768px) { .timeline-line { left: 2.25rem; } }
+
+    /* 탭 */
+    .tab-btn { transition: all 0.3s ease; }
+    .tab-btn.active { background: linear-gradient(135deg, rgba(244, 114, 182, 0.15), rgba(167, 139, 250, 0.15)); border-color: rgba(244, 114, 182, 0.4); color: #f472b6; }
+    .tab-content { display: none; animation: fadeIn 0.4s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* 배지 */
+    .badge-express { background: linear-gradient(135deg, #ffa726, #f59e0b); color: #0a0a1a; font-weight: 700; }
+    .badge-time { background: linear-gradient(135deg, rgba(167, 139, 250, 0.2), rgba(139, 92, 246, 0.2)); border: 1px solid rgba(167, 139, 250, 0.3); color: #a78bfa; }
+    .badge-food { background: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(34, 197, 94, 0.15)); border: 1px solid rgba(74, 222, 128, 0.3); color: #4ade80; }
+
+    /* 배경 글로우 */
+    .glow-sakura { box-shadow: 0 0 80px -20px rgba(244, 114, 182, 0.15); }
+    .glow-koi { box-shadow: 0 0 80px -20px rgba(255, 167, 38, 0.15); }
+    .glow-wisteria { box-shadow: 0 0 80px -20px rgba(167, 139, 250, 0.15); }
+
+    /* USJ 스케줄 테이블 */
+    .usj-row { transition: background 0.2s ease; }
+    .usj-row:hover { background: rgba(255, 255, 255, 0.03); }
+
+    /* 네비게이션 활성 상태 */
+    .nav-link { position: relative; transition: color 0.3s ease; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: linear-gradient(90deg, #f472b6, #ffa726); transition: width 0.3s ease, left 0.3s ease; border-radius: 1px; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; left: 0; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ==================== 네비게이션 ==================== -->
+  <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-18">
+        <a href="#hero" class="flex items-center gap-2 text-white font-bold text-lg tracking-tight">
+          <iconify-icon icon="ph:airplane-tilt-bold" class="text-sakura-400 text-xl"></iconify-icon>
+          <span class="hidden sm:inline">오사카 2026</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6 text-sm text-slate-400">
+          <a href="#flight" class="nav-link hover:text-white">항공·숙소</a>
+          <a href="#day1" class="nav-link hover:text-white">Day 1</a>
+          <a href="#day2" class="nav-link hover:text-white">Day 2</a>
+          <a href="#day3" class="nav-link hover:text-white">Day 3 USJ</a>
+          <a href="#day4" class="nav-link hover:text-white">Day 4</a>
+          <a href="#transport" class="nav-link hover:text-white">교통</a>
+          <a href="#shopping" class="nav-link hover:text-white">쇼핑</a>
+          <a href="#tips" class="nav-link hover:text-white">팁</a>
+        </div>
+        <button id="menu-btn" class="md:hidden text-white p-2" aria-label="메뉴 열기">
+          <iconify-icon icon="solar:hamburger-menu-line-duotone" class="text-xl"></iconify-icon>
+        </button>
+      </div>
+    </div>
+    <!-- 모바일 메뉴 -->
+    <div id="mobile-menu" class="md:hidden hidden glass-strong">
+      <div class="px-4 py-4 space-y-2">
+        <a href="#flight" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">항공·숙소</a>
+        <a href="#day1" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">Day 1 도톤보리</a>
+        <a href="#day2" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">Day 2 교토</a>
+        <a href="#day3" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">Day 3 USJ</a>
+        <a href="#day4" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">Day 4 출발</a>
+        <a href="#transport" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">교통</a>
+        <a href="#shopping" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">쇼핑</a>
+        <a href="#tips" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">여행 팁</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== 히어로 ==================== -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- 배경 그라디언트 -->
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-midnight via-ink to-midnight"></div>
+      <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-sakura-500/5 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-wisteria-500/5 rounded-full blur-[120px]"></div>
+      <div class="absolute top-1/3 right-1/3 w-[400px] h-[400px] bg-koi-500/4 rounded-full blur-[100px]"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
+      <!-- 태그 -->
+      <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-sakura-300 mb-8">
+        <iconify-icon icon="solar:flag-bold-duotone" class="text-base"></iconify-icon>
+        2026년 5월 9일 ~ 12일 · 3박 4일
+      </div>
+
+      <!-- 메인 타이틀 -->
+      <h1 class="reveal reveal-delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] mb-6">
+        <span class="text-white">오사카</span><br />
+        <span class="gradient-text">완벽 여행 가이드</span>
+      </h1>
+
+      <!-- 서브타이틀 -->
+      <p class="reveal reveal-delay-2 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        유니버설 스튜디오 재팬 25주년, 교토 당일치기, 도톤보리 야경까지.<br class="hidden sm:block" />
+        모든 동선과 맛집을 한 페이지에 담았습니다.
+      </p>
+
+      <!-- CTA 버튼 -->
+      <div class="reveal reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#day3" class="group inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-sakura-500 to-sakura-600 text-white font-bold text-base shadow-lg shadow-sakura-500/20 hover:shadow-sakura-500/30 hover:scale-[1.02] transition-all duration-300">
+          <iconify-icon icon="solar:gamepad-bold-duotone" class="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
+          USJ 공략 바로가기
+        </a>
+        <a href="#day1" class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl glass text-white font-semibold text-base hover:bg-white/10 transition-all duration-300">
+          <iconify-icon icon="solar:calendar-bold-duotone" class="text-lg text-koi-400"></iconify-icon>
+          일정 확인하기
+        </a>
+      </div>
+
+      <!-- 핵심 요약 카드 -->
+      <div class="reveal reveal-delay-4 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-16 max-w-3xl mx-auto">
+        <div class="glass-card rounded-2xl p-4 text-center card-hover">
+          <iconify-icon icon="ph:airplane-tilt-bold" class="text-2xl text-sakura-400 mb-2"></iconify-icon>
+          <p class="text-xs text-slate-500 mb-1">항공편</p>
+          <p class="text-sm font-bold text-white">이스타항공</p>
+          <p class="text-xs text-slate-400">ZE611 / ZE612</p>
+        </div>
+        <div class="glass-card rounded-2xl p-4 text-center card-hover">
+          <iconify-icon icon="solar:buildings-2-bold-duotone" class="text-2xl text-koi-400 mb-2"></iconify-icon>
+          <p class="text-xs text-slate-500 mb-1">숙소</p>
+          <p class="text-sm font-bold text-white">칸데오 호텔</p>
+          <p class="text-xs text-slate-400">난바 · 3박</p>
+        </div>
+        <div class="glass-card rounded-2xl p-4 text-center card-hover">
+          <iconify-icon icon="solar:gamepad-bold-duotone" class="text-2xl text-wisteria-400 mb-2"></iconify-icon>
+          <p class="text-xs text-slate-500 mb-1">하이라이트</p>
+          <p class="text-sm font-bold text-white">USJ 25주년</p>
+          <p class="text-xs text-slate-400">익스프레스 7</p>
+        </div>
+        <div class="glass-card rounded-2xl p-4 text-center card-hover">
+          <iconify-icon icon="solar:map-point-wave-bold-duotone" class="text-2xl text-green-400 mb-2"></iconify-icon>
+          <p class="text-xs text-slate-500 mb-1">교토</p>
+          <p class="text-sm font-bold text-white">당일치기</p>
+          <p class="text-xs text-slate-400">후시미이나리 · 기요미즈</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 스크롤 힌트 -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 text-xs animate-bounce">
+      <span>아래로 스크롤</span>
+      <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="text-lg"></iconify-icon>
+    </div>
+  </section>
+
+  <!-- ==================== 항공·숙소 ==================== -->
+  <section id="flight" class="relative py-24 sm:py-32">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-koi-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- 섹션 헤더 -->
+      <div class="reveal text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase text-koi-400 mb-3">Flight & Hotel</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white">항공 & 숙소</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <!-- 항공편 카드 -->
+        <div class="reveal glass-card rounded-3xl p-6 sm:p-8 card-hover glow-sakura">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-sakura-500/10 flex items-center justify-center">
+              <iconify-icon icon="ph:airplane-tilt-bold" class="text-2xl text-sakura-400"></iconify-icon>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">비행 정보</h3>
+              <p class="text-sm text-slate-400">이스타항공 · 인천 ↔ 간사이</p>
+            </div>
+          </div>
+
+          <!-- 가는 편 -->
+          <div class="glass rounded-2xl p-5 mb-4">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-sakura-500/15 text-sakura-300 text-xs font-bold">가는 편</span>
+              <span class="text-xs text-slate-500">5/9 (토)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-center">
+                <p class="text-2xl font-black text-white">09:15</p>
+                <p class="text-xs text-slate-400 mt-1">인천 ICN</p>
+              </div>
+              <div class="flex-1 flex items-center justify-center px-4">
+                <div class="flex items-center gap-1 w-full">
+                  <div class="w-2 h-2 rounded-full bg-sakura-400"></div>
+                  <div class="flex-1 border-t border-dashed border-sakura-400/30"></div>
+                  <iconify-icon icon="ph:airplane-bold" class="text-sakura-400 text-sm"></iconify-icon>
+                  <div class="flex-1 border-t border-dashed border-sakura-400/30"></div>
+                  <div class="w-2 h-2 rounded-full bg-sakura-400"></div>
+                </div>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-black text-white">11:10</p>
+                <p class="text-xs text-slate-400 mt-1">간사이 KIX</p>
+              </div>
+            </div>
+            <p class="text-xs text-center text-slate-500 mt-2">ZE611 · 약 1시간 55분</p>
+          </div>
+
+          <!-- 오는 편 -->
+          <div class="glass rounded-2xl p-5">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-wisteria-500/15 text-wisteria-400 text-xs font-bold">오는 편</span>
+              <span class="text-xs text-slate-500">5/12 (화)</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="text-center">
+                <p class="text-2xl font-black text-white">12:10</p>
+                <p class="text-xs text-slate-400 mt-1">간사이 KIX</p>
+              </div>
+              <div class="flex-1 flex items-center justify-center px-4">
+                <div class="flex items-center gap-1 w-full">
+                  <div class="w-2 h-2 rounded-full bg-wisteria-400"></div>
+                  <div class="flex-1 border-t border-dashed border-wisteria-400/30"></div>
+                  <iconify-icon icon="ph:airplane-bold" class="text-wisteria-400 text-sm -scale-x-100"></iconify-icon>
+                  <div class="flex-1 border-t border-dashed border-wisteria-400/30"></div>
+                  <div class="w-2 h-2 rounded-full bg-wisteria-400"></div>
+                </div>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-black text-white">14:00</p>
+                <p class="text-xs text-slate-400 mt-1">인천 ICN</p>
+              </div>
+            </div>
+            <p class="text-xs text-center text-slate-500 mt-2">ZE612 · 약 1시간 50분</p>
+          </div>
+        </div>
+
+        <!-- 숙소 카드 -->
+        <div class="reveal reveal-delay-1 glass-card rounded-3xl p-6 sm:p-8 card-hover glow-koi">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-koi-500/10 flex items-center justify-center">
+              <iconify-icon icon="solar:buildings-2-bold-duotone" class="text-2xl text-koi-400"></iconify-icon>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white">CANDEO HOTELS</h3>
+              <p class="text-sm text-slate-400">카ンデオホテルズ大阪なんば</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="glass rounded-2xl p-5">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-slate-500 mb-1">체크인</p>
+                  <p class="text-lg font-bold text-white">5/9 <span class="text-koi-400">15:00</span></p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 mb-1">체크아웃</p>
+                  <p class="text-lg font-bold text-white">5/12 <span class="text-koi-400">11:00</span></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="solar:map-point-bold-duotone" class="text-koi-400 text-lg mt-0.5"></iconify-icon>
+                <div>
+                  <p class="text-sm text-white font-medium">히가시신사이바시 2-2-5</p>
+                  <p class="text-xs text-slate-400">中央区東心斎橋 · 도톤보리 도보권</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="solar:bed-bold-duotone" class="text-koi-400 text-lg mt-0.5"></iconify-icon>
+                <div>
+                  <p class="text-sm text-white font-medium">Superior Queen · 금연</p>
+                  <p class="text-xs text-slate-400">성인 2명</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="solar:fire-bold-duotone" class="text-koi-400 text-lg mt-0.5"></iconify-icon>
+                <div>
+                  <p class="text-sm text-white font-medium">사우나 무료 이용</p>
+                  <p class="text-xs text-slate-400">무료 Wi-Fi 포함</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="solar:wallet-money-bold-duotone" class="text-koi-400 text-lg mt-0.5"></iconify-icon>
+                <div>
+                  <p class="text-sm text-white font-medium">₩598,640 <span class="text-xs text-slate-400">(3박 세금 포함)</span></p>
+                  <p class="text-xs text-slate-400">1박 약 ₩199,547 · 환불 불가 · 도시세 별도</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <iconify-icon icon="solar:phone-bold-duotone" class="text-koi-400 text-lg mt-0.5"></iconify-icon>
+                <div>
+                  <p class="text-sm text-white font-medium">+81-6-6212-2200</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DAY 1 ==================== -->
+  <section id="day1" class="relative py-24 sm:py-32">
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-sakura-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- 섹션 헤더 -->
+      <div class="reveal text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-sakura-300 mb-4">
+          <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-base"></iconify-icon>
+          5월 9일 토요일
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 1</h2>
+        <p class="text-lg text-slate-400">도착 + 도톤보리 · 신사이바시</p>
+      </div>
+
+      <!-- 타임라인 -->
+      <div class="max-w-3xl mx-auto">
+        <div class="relative pl-16 md:pl-20 space-y-8">
+          <div class="timeline-line"></div>
+
+          <!-- 09:15 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="ph:airplane-bold" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">09:15</span>
+                <span class="text-xs text-slate-500">인천 출발</span>
+              </div>
+              <p class="text-sm text-slate-300">이스타항공 ZE611 편으로 인천공항 출발</p>
+            </div>
+          </div>
+
+          <!-- 11:10 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:flag-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">11:10</span>
+                <span class="text-xs text-slate-500">간사이공항 도착</span>
+              </div>
+              <p class="text-sm text-slate-300">입국 수속 후 <strong class="text-white">난카이 라피트 특급</strong> 또는 공항 급행으로 난바역 이동 (35~50분)</p>
+            </div>
+          </div>
+
+          <!-- 13:00 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:buildings-2-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-koi-400">13:00경</span>
+                <span class="text-xs text-slate-500">호텔 도착</span>
+              </div>
+              <p class="text-sm text-slate-300">칸데오 호텔 도착 → 프론트에 짐 맡기기 (체크인 15:00)</p>
+            </div>
+          </div>
+
+          <!-- 오후 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:streets-map-point-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-wisteria-400">오후</span>
+                <span class="text-xs text-slate-500">도톤보리 + 신사이바시</span>
+              </div>
+              <p class="text-sm text-slate-300 leading-relaxed">호텔 도보권인 <strong class="text-white">도톤보리</strong>와 <strong class="text-white">신사이바시스지 상점가</strong> 산책. 글리코상 기념 촬영. 쿠시카츠·타코야키·오코노미야키 맛집에서 늦은 점심.</p>
+            </div>
+          </div>
+
+          <!-- 15:00 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:fire-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">15:00</span>
+                <span class="text-xs text-slate-500">체크인 + 휴식</span>
+              </div>
+              <p class="text-sm text-slate-300">호텔 체크인 → 짐 정리 + <strong class="text-white">칸데오 호텔 사우나</strong>에서 여독 풀기</p>
+            </div>
+          </div>
+
+          <!-- 저녁 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:moon-stars-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-koi-400">저녁</span>
+                <span class="text-xs text-slate-500">야경 + 식사</span>
+              </div>
+              <p class="text-sm text-slate-300 leading-relaxed"><strong class="text-white">도톤보리 리버 크루즈</strong>로 야경 감상. 스키야키 또는 장어덮밥으로 저녁 식사.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DAY 2 ==================== -->
+  <section id="day2" class="relative py-24 sm:py-32">
+    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-wisteria-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- 섹션 헤더 -->
+      <div class="reveal text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-wisteria-400 mb-4">
+          <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-base"></iconify-icon>
+          5월 10일 일요일
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 2</h2>
+        <p class="text-lg text-slate-400">교토 당일치기 + 우메다</p>
+      </div>
+
+      <!-- 타임라인 -->
+      <div class="max-w-3xl mx-auto">
+        <div class="relative pl-16 md:pl-20 space-y-8">
+          <div class="timeline-line"></div>
+
+          <!-- 08:00 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:tram-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-wisteria-400">08:00</span>
+                <span class="text-xs text-slate-500">교토로 출발</span>
+              </div>
+              <p class="text-sm text-slate-300">호텔 출발 → 心斎橋역 미도스지선 → 梅田역 → <strong class="text-white">한큐 교토선</strong> → 河原町역 (약 1시간 10분)</p>
+            </div>
+          </div>
+
+          <!-- 오전 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:compass-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-koi-400">오전</span>
+                <span class="text-xs text-slate-500">후시미이나리 신사</span>
+              </div>
+              <p class="text-sm text-slate-300"><strong class="text-white">후시미이나리 신사</strong> 방문. 이른 아침이 사람 적음. 천 개의 붉은 도리이가 이어지는 장관. 이후 게이한선으로 이동.</p>
+            </div>
+          </div>
+
+          <!-- 점심 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:chef-hat-heart-bold-duotone" class="text-green-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-green-400">점심</span>
+                <span class="text-xs text-slate-500">니시키시장</span>
+              </div>
+              <p class="text-sm text-slate-300"><strong class="text-white">니시키시장</strong>에서 길거리 음식으로 점심. 교토의 부엌이라 불리는 400년 전통 시장.</p>
+            </div>
+          </div>
+
+          <!-- 오후 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:waterdrops-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">오후</span>
+                <span class="text-xs text-slate-500">기요미즈데라 + 기온</span>
+              </div>
+              <p class="text-sm text-slate-300"><strong class="text-white">기요미즈데라</strong> 관람 + <strong class="text-white">기온 거리</strong> 산책. 전통 찻집과 게이샤 거리의 정취를 느끼며 여유롭게.</p>
+            </div>
+          </div>
+
+          <!-- 늦은 오후 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:bag-4-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-koi-400">늦은 오후</span>
+                <span class="text-xs text-slate-500">우메다 쇼핑</span>
+              </div>
+              <p class="text-sm text-slate-300">한큐 가와라마치역 → 우메다 복귀. <strong class="text-white">한큐 백화점 · 루쿠아 · 그랜드 프론트 오사카</strong>에서 쇼핑 (바오바오 백 등).</p>
+            </div>
+          </div>
+
+          <!-- 저녁 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:city-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-wisteria-400">저녁</span>
+                <span class="text-xs text-slate-500">우메다 스카이빌딩</span>
+              </div>
+              <p class="text-sm text-slate-300"><strong class="text-white">우메다 스카이빌딩 공중정원 전망대</strong>에서 오사카 야경 감상. 우메다에서 저녁 식사 후 미도스지선으로 호텔 복귀.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DAY 3 — USJ ==================== -->
+  <section id="day3" class="relative py-24 sm:py-32">
+    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-sakura-500/5 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-koi-500/5 rounded-full blur-[120px]"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- 섹션 헤더 -->
+      <div class="reveal text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-koi-300 mb-4">
+          <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-base"></iconify-icon>
+          5월 11일 월요일 · 평일이라 주말보다 한산
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 3 — USJ</h2>
+        <p class="text-lg text-slate-400">유니버설 스튜디오 재팬 25주년 종일 공략</p>
+        <p class="text-sm text-slate-500 mt-2">익스프레스 패스 7 세션1 · 히포그리프 11:10 / SNW 17:10</p>
+      </div>
+
+      <!-- USJ 핵심 정보 카드 -->
+      <div class="reveal grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+        <div class="glass-card rounded-2xl p-5 text-center card-hover">
+          <iconify-icon icon="solar:ticket-sale-bold-duotone" class="text-3xl text-koi-400 mb-3"></iconify-icon>
+          <p class="text-sm font-bold text-white mb-1">익스프레스 패스 7</p>
+          <p class="text-xs text-slate-400">₩226,500/인 × 2</p>
+          <p class="text-xs text-slate-500 mt-1">트램카 & 셀렉션</p>
+        </div>
+        <div class="glass-card rounded-2xl p-5 text-center card-hover">
+          <iconify-icon icon="solar:star-bold-duotone" class="text-3xl text-sakura-400 mb-3"></iconify-icon>
+          <p class="text-sm font-bold text-white mb-1">25주년 기념</p>
+          <p class="text-xs text-slate-400">Discover U!!!</p>
+          <p class="text-xs text-slate-500 mt-1">2026.3.31~2027.3.30</p>
+        </div>
+        <div class="glass-card rounded-2xl p-5 text-center card-hover">
+          <iconify-icon icon="solar:ghost-bold-duotone" class="text-3xl text-wisteria-400 mb-3"></iconify-icon>
+          <p class="text-sm font-bold text-white mb-1">Cool Japan 2026</p>
+          <p class="text-xs text-slate-400">주술회전 한정</p>
+          <p class="text-xs text-slate-500 mt-1">4D + Story Ride</p>
+        </div>
+      </div>
+
+      <!-- USJ 탭 네비게이션 -->
+      <div class="reveal flex flex-wrap gap-2 mb-8 justify-center">
+        <button class="tab-btn active px-4 py-2 rounded-xl glass text-sm font-medium text-slate-300 border border-transparent" data-tab="schedule">
+          <iconify-icon icon="solar:clock-circle-bold-duotone" class="mr-1"></iconify-icon>시간별 동선
+        </button>
+        <button class="tab-btn px-4 py-2 rounded-xl glass text-sm font-medium text-slate-300 border border-transparent" data-tab="rides">
+          <iconify-icon icon="solar:rocket-bold-duotone" class="mr-1"></iconify-icon>어트랙션 가이드
+        </button>
+        <button class="tab-btn px-4 py-2 rounded-xl glass text-sm font-medium text-slate-300 border border-transparent" data-tab="food">
+          <iconify-icon icon="solar:chef-hat-bold-duotone" class="mr-1"></iconify-icon>식당 & 간식
+        </button>
+        <button class="tab-btn px-4 py-2 rounded-xl glass text-sm font-medium text-slate-300 border border-transparent" data-tab="prep">
+          <iconify-icon icon="solar:checklist-bold-duotone" class="mr-1"></iconify-icon>사전 준비
+        </button>
+      </div>
+
+      <!-- 탭: 시간별 동선 -->
+      <div id="tab-schedule" class="tab-content active">
+        <!-- 오전 블록 -->
+        <div class="reveal mb-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sakura-500/20 to-sakura-600/20 flex items-center justify-center">
+              <iconify-icon icon="solar:sun-2-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">오전 — 스릴 라이드 오픈런</h3>
+              <p class="text-xs text-slate-400">07:00 ~ 10:30</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl overflow-hidden">
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-sakura-400">06:30</p>
+              </div>
+              <div class="flex-1">
+                <p class="text-sm text-white font-medium">호텔 출발</p>
+                <p class="text-xs text-slate-400 mt-1">난바역 → JR 니시쿠조 경유 → 유니버설 시티역 (30~40분). 유니버설 시티워크에서 아침 식사.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-sakura-400">07:00</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">USJ 정문 도착</p>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">공식 개장 1시간 전 도착. 실제로는 일찍 개장하는 경우 다수.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-sakura-400">07:00</p>
+                <p class="text-xs text-slate-500">~08:00</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">플라잉 다이노소어</p>
+                  <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">시간 지정 없음. 아침에 바로 사용. 짐은 무료 로커 보관 필수. USJ 최강 스릴 코스터!</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-sakura-400">08:00</p>
+                <p class="text-xs text-slate-500">~09:00</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">주술회전 × Story Ride</p>
+                  <span class="px-2 py-0.5 rounded-md text-[10px] bg-wisteria-500/15 text-wisteria-400 border border-wisteria-400/20">일반 대기</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">할리우드 드림 코스터의 주술회전 한정 오버레이. 아침이라 40~60분 대기.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-sakura-400">09:00</p>
+                <p class="text-xs text-slate-500">~09:40</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">스페이스 판타지 더 라이드</p>
+                  <span class="px-2 py-0.5 rounded-md text-[10px] bg-wisteria-500/15 text-wisteria-400 border border-wisteria-400/20">일반 대기</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">USJ 오리지널 스피닝 코스터. 아침이라 30~50분 대기.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-sakura-400">09:40</p>
+                <p class="text-xs text-slate-500">~10:30</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">죠스 (JAWS)</p>
+                  <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">시간 지정 없음. 미국에서는 이미 폐쇄된 클래식. USJ에서만 탑승 가능!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 해리포터 블록 -->
+        <div class="reveal mb-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-wisteria-500/20 to-wisteria-600/20 flex items-center justify-center">
+              <iconify-icon icon="solar:magic-stick-3-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">해리포터 에리어</h3>
+              <p class="text-xs text-slate-400">10:30 ~ 12:30</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl overflow-hidden">
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-wisteria-400">10:30</p>
+                <p class="text-xs text-slate-500">~11:10</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">포비든 저니</p>
+                  <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">시간 지정 없음. 격렬한 모션 — 멀미 유발 가능. 일본어 음성.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-wisteria-400">11:10</p>
+                <p class="text-xs text-slate-500">~11:40</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">히포그리프</p>
+                  <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+                  <span class="badge-time px-2 py-0.5 rounded-md text-[10px]">지정 11:10</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">익스프레스 패스 지정 시간. 가벼운 야외 코스터.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-green-400">11:40</p>
+                <p class="text-xs text-slate-500">~12:30</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">🍽️ 쓰리 브룸스틱스 점심</p>
+                  <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">FOOD</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">피크 전에 먹기. 뒷편 테라스에서 호그와트 성 뷰. 치킨, 피쉬 앤 칩스, 아이리시 스튜 추천.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 오후 블록 -->
+        <div class="reveal mb-8">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-koi-500/20 to-koi-600/20 flex items-center justify-center">
+              <iconify-icon icon="solar:sun-fog-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">오후 — 미니언 + 쇼 + 여유</h3>
+              <p class="text-xs text-slate-400">12:30 ~ 17:00</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl overflow-hidden">
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-koi-400">12:30</p>
+                <p class="text-xs text-slate-500">~14:00</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">미니언 메이헴 + 빌런콘 블래스트</p>
+                  <span class="px-2 py-0.5 rounded-md text-[10px] bg-wisteria-500/15 text-wisteria-400 border border-wisteria-400/20">일반 대기</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">익스프레스 미포함. 오후에 대기 짧음. 가족 친화적.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-koi-400">14:00</p>
+                <p class="text-xs text-slate-500">~15:00</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">주술회전 The Real 4-D</p>
+                  <span class="px-2 py-0.5 rounded-md text-[10px] bg-red-500/15 text-red-400 border border-red-400/20">한정</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">시계탑의 회귀. 4D 시어터. 이타도리·후시구로 전투 초근접 체감. 별도 티켓 불필요.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-koi-400">15:00</p>
+                <p class="text-xs text-slate-500">~17:00</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">워터월드 쇼 / 퍼레이드 / 여유</p>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">NO LIMIT! 퍼레이드, 주술회전 굿즈·푸드, 여유 시간. 공연 시간 앱 확인. 파란 구역 물벼락 주의!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 저녁 — SNW 블록 -->
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500/20 to-red-600/20 flex items-center justify-center">
+              <iconify-icon icon="solar:gamepad-bold-duotone" class="text-red-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">저녁 — 슈퍼 닌텐도 월드</h3>
+              <p class="text-xs text-slate-400">17:10 ~ 폐장</p>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl overflow-hidden">
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-red-400">17:10</p>
+                <p class="text-xs text-slate-500">~17:40</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">마리오 카트: 쿠파의 도전장</p>
+                  <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+                  <span class="badge-time px-2 py-0.5 rounded-md text-[10px]">지정 17:10</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">AR 고글 착용. 인터랙티브 게임 요소. USJ 인기 1위!</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-red-400">17:40</p>
+                <p class="text-xs text-slate-500">~18:10</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">요시 어드벤처</p>
+                  <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+                  <span class="badge-time px-2 py-0.5 rounded-md text-[10px]">지정 17:40</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">가벼운 라이드 + SNW 전경. 편안하게 풍경 감상.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-red-400">18:10</p>
+                <p class="text-xs text-slate-500">~18:40</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">동키콩 크레이지 트램카</p>
+                  <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+                  <span class="badge-time px-2 py-0.5 rounded-md text-[10px]">지정 18:10</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">배럴 캐논 발사 + 트랙 점프. 가족 친화적이면서 스릴도 있음.</p>
+              </div>
+            </div>
+            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
+              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+                <p class="text-sm font-bold text-koi-400">18:40~</p>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <p class="text-sm text-white font-medium">SNW 산책 + 호그스미드 야경</p>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">저녁 닌텐도 월드 조명이 예쁨. 재탑승은 일반 대기 (저녁엔 짧음). 퍼레이드 감상.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 탭: 어트랙션 가이드 -->
+      <div id="tab-rides" class="tab-content">
+        <div class="reveal grid gap-4 sm:grid-cols-2">
+          <!-- 동키콩 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">동키콩 마인카트 매드니스</h4>
+              <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">코스터</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★★★☆☆</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-green-400">낮음</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">배럴 캐논에서 발사, 트랙 점프 연출. 가족 친화적이나 대기 시간이 단점.</p>
+          </div>
+
+          <!-- 마리오 카트 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">마리오 카트: 쿠파의 도전</h4>
+              <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">AR 다크 라이드</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★★☆☆☆</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-green-400">낮음</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">AR 고글 착용. 인터랙티브 게임 요소. USJ 인기 1위.</p>
+          </div>
+
+          <!-- 플라잉 다이노소어 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">플라잉 다이노소어</h4>
+              <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">플라잉 코스터</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-red-400">★★★★★</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-koi-400">중간</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">수평 자세로 비행. 거꾸로 뒤집힘 다수. USJ 최강 스릴!</p>
+          </div>
+
+          <!-- 주술회전 Story Ride -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">주술회전 × Story Ride</h4>
+              <span class="px-2 py-0.5 rounded-md text-[10px] bg-red-500/15 text-red-400 border border-red-400/20">한정</span>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">코스터 (오버레이)</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★★★★☆</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-green-400">낮음</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">할리우드 드림 코스터에 주술회전 스토리 입힌 한정판. Cool Japan 기간 한정.</p>
+          </div>
+
+          <!-- 주술회전 4D -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">주술회전 The Real 4-D</h4>
+              <span class="px-2 py-0.5 rounded-md text-[10px] bg-red-500/15 text-red-400 border border-red-400/20">한정</span>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">4D 시어터</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★★☆☆☆</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-green-400">낮음</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">좌석에서 4D 효과(바람·물·진동)로 전투 체감. 별도 티켓 불필요.</p>
+          </div>
+
+          <!-- 포비든 저니 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">해리포터 포비든 저니</h4>
+              <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">모션 다크 라이드</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★★★☆☆</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-red-400">높음</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">격렬한 흔들림 + 스크린 영상. 멀미 유발 주의. 일본어 음성.</p>
+          </div>
+
+          <!-- 스페이스 판타지 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">스페이스 판타지 더 라이드</h4>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">스피닝 코스터</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★★★☆☆</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-koi-400">중간</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">스페이스 마운틴 + 카와이 아니메 분위기. USJ 오리지널.</p>
+          </div>
+
+          <!-- 죠스 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">죠스 (JAWS)</h4>
+              <span class="badge-express px-2 py-0.5 rounded-md text-[10px]">EXPRESS</span>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">보트 라이드</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★★☆☆☆</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-green-400">없음</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">미국에서는 이미 폐쇄된 클래식. USJ에서만 탑승 가능.</p>
+          </div>
+
+          <!-- 워터월드 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">워터월드</h4>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">라이브 스턴트 쇼</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-slate-400">—</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-slate-400">—</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">폭발·물대포 액션. 파란 구역은 물폭탄. 20분 전 입장 권장.</p>
+          </div>
+
+          <!-- 미니언 + 빌런콘 -->
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-sm font-bold text-white">미니언 메이헴 / 빌런콘</h4>
+            </div>
+            <div class="flex items-center gap-4 mb-3">
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">타입</p>
+                <p class="text-xs text-slate-300">3D 라이드 / 슈팅</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">스릴</p>
+                <p class="text-xs text-koi-400">★~★★</p>
+              </div>
+              <div>
+                <p class="text-[10px] text-slate-500 uppercase tracking-wider">멀미</p>
+                <p class="text-xs text-green-400">낮음~없음</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400">메이헴은 3D 무비 라이드 (앞줄 추천). 블래스트는 2025 신규 워크웨이 슈팅. 30분 이상이면 스킵.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 탭: 식당 & 간식 -->
+      <div id="tab-food" class="tab-content">
+        <!-- 식당 -->
+        <div class="reveal mb-8">
+          <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <iconify-icon icon="solar:chef-hat-heart-bold-duotone" class="text-green-400"></iconify-icon>
+            앉아서 먹기 — 식당 추천
+          </h3>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="glass-card rounded-2xl p-5 card-hover">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">SNW</span>
+                <h4 class="text-sm font-bold text-white">키노피오 카페</h4>
+              </div>
+              <p class="text-xs text-koi-300 mb-2">머쉬룸 피자 볼 · 피르하나 플랜트 스파게티 · 피치 공주 케이크</p>
+              <p class="text-xs text-slate-400">SNW 테마 카페. 맛과 비주얼 모두 USJ 내 최고. 혼잡 주의.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-5 card-hover">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">해리포터</span>
+                <h4 class="text-sm font-bold text-white">쓰리 브룸스틱스</h4>
+              </div>
+              <p class="text-xs text-koi-300 mb-2">치킨 · 피쉬 앤 칩스 · 아이리시 스튜(채식)</p>
+              <p class="text-xs text-slate-400">안정적인 맛. 뒷편 테라스에서 호그와트 성 뷰. 앱 주문 시 줄이 빨리 빠짐.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-5 card-hover">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">샌프란시스코</span>
+                <h4 class="text-sm font-bold text-white">해피니스 카페</h4>
+              </div>
+              <p class="text-xs text-koi-300 mb-2">미니언 버거</p>
+              <p class="text-xs text-slate-400">드링크 바 무제한 포함 (커피·콜라). 오후 카페인 보충에 최적.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-5 card-hover">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 rounded-md text-[10px] bg-red-500/15 text-red-400 border border-red-400/20">한정</span>
+                <h4 class="text-sm font-bold text-white">몬헌 — 모리바의 연회</h4>
+              </div>
+              <p class="text-xs text-koi-300 mb-2">로스트 미트 플래터 · 버터 치킨 카레</p>
+              <p class="text-xs text-slate-400">5/17까지 한정. ¥7,000/인. 몬헌 팬이면 필수 (사전 예약 추천).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 간식 -->
+        <div class="reveal">
+          <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <iconify-icon icon="solar:donut-bold-duotone" class="text-sakura-400"></iconify-icon>
+            이동하면서 — 간식 추천
+          </h3>
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="glass-card rounded-2xl p-4 card-hover">
+              <p class="text-sm font-bold text-white mb-1">버터비어</p>
+              <p class="text-xs text-slate-400 mb-2">호그스미드 · ¥700~</p>
+              <p class="text-xs text-slate-500">달달한 캐러멜 맛. 콜드/프로즌/핫 선택. 쓰리 브룸스틱스 내부가 줄이 짧음.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-4 card-hover">
+              <p class="text-sm font-bold text-white mb-1">요시 거북이 번</p>
+              <p class="text-xs text-slate-400 mb-2">요시의 스낵 아일랜드 · ¥600~</p>
+              <p class="text-xs text-slate-500">SNW 내 간식. 칼조네 스타일.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-4 card-hover">
+              <p class="text-sm font-bold text-white mb-1">츄러스</p>
+              <p class="text-xs text-slate-400 mb-2">파크 곳곳 · ¥500~</p>
+              <p class="text-xs text-slate-500">딸기, 초콜릿 바나나 등 시즌 한정 맛. 캐릭터 테마.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-4 card-hover">
+              <p class="text-sm font-bold text-white mb-1">피치 공주 케이크</p>
+              <p class="text-xs text-slate-400 mb-2">키노피오 카페 · ¥1,200~</p>
+              <p class="text-xs text-slate-500">2~4인분. 비주얼 + 맛 모두 좋음.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-4 card-hover">
+              <p class="text-sm font-bold text-white mb-1">팝콘 버킷</p>
+              <p class="text-xs text-slate-400 mb-2">파크 곳곳 · ¥3,000~</p>
+              <p class="text-xs text-slate-500">미니언/마리오 등 캐릭터 버킷. 기념품으로 인기.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 식사 팁 -->
+        <div class="reveal mt-8 glass rounded-2xl p-5">
+          <h4 class="text-sm font-bold text-koi-400 mb-3 flex items-center gap-2">
+            <iconify-icon icon="solar:lightbulb-bolt-bold-duotone"></iconify-icon>
+            식사 팁
+          </h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>
+              입장 전 유니버설 시티워크 또는 시내에서 아침 든든히 먹기 (파크 내 아침 식사 없음)
+            </li>
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>
+              점심은 11:30 이전 또는 14시 이후에 먹으면 줄이 짧음
+            </li>
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>
+              파크 밖 음식 반입은 공식 허용이나 파크 내 취식은 금지
+            </li>
+            <li class="flex items-start gap-2">
+              <iconify-icon icon="solar:danger-triangle-bold" class="text-koi-400 mt-0.5 flex-shrink-0"></iconify-icon>
+              퇴장 후 재입장 불가 — 유니버설 시티워크 식당은 폐장 후에만 이용 가능
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 탭: 사전 준비 -->
+      <div id="tab-prep" class="tab-content">
+        <div class="reveal max-w-3xl mx-auto space-y-4">
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-koi-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-lg font-black text-koi-400">1</span>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white mb-1">USJ 1일 스튜디오 패스 구매</h4>
+                <p class="text-xs text-slate-400">Klook에서 2인분 구매 (현장 티켓 부스 없음). 닌텐도 월드 입장은 익스프레스 패스에 포함되어 추가 불필요.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-koi-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-lg font-black text-koi-400">2</span>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white mb-1">익스프레스 패스 7 구매</h4>
+                <p class="text-xs text-slate-400 mb-2">Klook "트램카 & 셀렉션" — ₩226,500/인 × 2인 = ₩453,000</p>
+                <div class="glass rounded-xl p-3 space-y-1.5">
+                  <p class="text-xs text-wisteria-400"><strong>세션1 선택:</strong> 히포그리프 11:10 / SNW 17:10</p>
+                  <p class="text-xs text-wisteria-400"><strong>선택 옵션:</strong> 플라잉 다이너소어 + 죠스</p>
+                  <p class="text-xs text-slate-500">포함: 동키콩 트램카 + 마리오 카트 + 요시 + 포비든 저니 + 히포그리프 + 플라잉 다이노 + 죠스 + SNW 입장 확약</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-koi-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-lg font-black text-koi-400">3</span>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white mb-1">USJ 공식 앱 설치</h4>
+                <p class="text-xs text-slate-400">입장권 QR코드를 앱에 미리 등록. 입장 후 슈퍼 닌텐도 월드 시간 지정 입장권 발급에 필요.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-koi-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-lg font-black text-koi-400">4</span>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white mb-1">티켓 인쇄</h4>
+                <p class="text-xs text-slate-400">스마트폰 QR보다 종이 출력이 입장 시 빠름 (Klook 구매 시 인쇄 가능).</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-koi-500/10 flex items-center justify-center flex-shrink-0">
+                <span class="text-lg font-black text-koi-400">5</span>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white mb-1">Cool Japan 2026 한정 어트랙션 확인</h4>
+                <p class="text-xs text-slate-400 mb-2">5/11 방문일에 체험 가능한 한정 어트랙션:</p>
+                <div class="space-y-2">
+                  <div class="flex items-start gap-2">
+                    <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0 text-sm"></iconify-icon>
+                    <p class="text-xs text-slate-400"><strong class="text-white">주술회전 The Real 4-D</strong> — 시계탑의 회귀. 별도 티켓 불필요.</p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <iconify-icon icon="solar:danger-triangle-bold" class="text-koi-400 mt-0.5 flex-shrink-0 text-sm"></iconify-icon>
+                    <p class="text-xs text-slate-400"><strong class="text-white">주술회전 × Story Ride</strong> — 5/10까지 1부 → 5/11은 2부 전환 직후일 수 있음. 운영 확인 필요.</p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <iconify-icon icon="solar:close-circle-bold" class="text-red-400 mt-0.5 flex-shrink-0 text-sm"></iconify-icon>
+                    <p class="text-xs text-slate-400"><strong class="text-white">프리렌 Story Walk</strong> — 5/30 오픈 → 5/11에는 미오픈.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 당일 준비 팁 -->
+          <div class="glass rounded-2xl p-5">
+            <h4 class="text-sm font-bold text-koi-400 mb-3 flex items-center gap-2">
+              <iconify-icon icon="solar:lightbulb-bolt-bold-duotone"></iconify-icon>
+              당일 준비 팁
+            </h4>
+            <ul class="space-y-2 text-xs text-slate-400">
+              <li class="flex items-start gap-2">
+                <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                가방 보관: 라이드별 무료 로커 있음 (플라잉 다이노소어 등은 짐 보관 필수)
+              </li>
+              <li class="flex items-start gap-2">
+                <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                익스프레스 패스의 SNW 입장 확약권 포함 → 앱에서 별도 시간 지정 입장권 발급 불필요
+              </li>
+              <li class="flex items-start gap-2">
+                <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>
+                한 번 퇴장하면 재입장 불가 — 식사·간식은 파크 내에서 해결
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DAY 4 ==================== -->
+  <section id="day4" class="relative py-24 sm:py-32">
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-wisteria-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- 섹션 헤더 -->
+      <div class="reveal text-center mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-slate-300 mb-4">
+          <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-base"></iconify-icon>
+          5월 12일 화요일
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 4</h2>
+        <p class="text-lg text-slate-400">출발일</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="relative pl-16 md:pl-20 space-y-8">
+          <div class="timeline-line"></div>
+
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:moon-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-wisteria-400">전날 밤</span>
+              </div>
+              <p class="text-sm text-slate-300">짐 정리 완료해둘 것</p>
+            </div>
+          </div>
+
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:sun-2-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-koi-400">07:00</span>
+                <span class="text-xs text-slate-500">기상</span>
+              </div>
+              <p class="text-sm text-slate-300">근처 편의점 또는 카페에서 아침 (호텔 조식 미포함)</p>
+            </div>
+          </div>
+
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:logout-2-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">08:00</span>
+                <span class="text-xs text-slate-500">체크아웃</span>
+              </div>
+              <p class="text-sm text-slate-300">11:00까지 가능하지만 비행기 시간상 일찍 출발</p>
+            </div>
+          </div>
+
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:tram-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-wisteria-400">08:15</span>
+                <span class="text-xs text-slate-500">난바역 출발</span>
+              </div>
+              <p class="text-sm text-slate-300">난카이선 약 40~50분 → <strong class="text-white">09:05</strong> 간사이공항 도착</p>
+            </div>
+          </div>
+
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:bag-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-koi-400">09:05</span>
+                <span class="text-xs text-slate-500">간사이공항</span>
+              </div>
+              <p class="text-sm text-slate-300">출국 수속 + 면세점 쇼핑</p>
+            </div>
+          </div>
+
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="ph:airplane-tilt-bold" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">12:10</span>
+                <span class="text-xs text-slate-500">간사이공항 출발</span>
+              </div>
+              <p class="text-sm text-slate-300">이스타항공 ZE612 → <strong class="text-white">14:00</strong> 인천공항 도착</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 교통 가이드 ==================== -->
+  <section id="transport" class="relative py-24 sm:py-32">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-sakura-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase text-sakura-400 mb-3">Transportation</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white">교통 가이드</h2>
+      </div>
+
+      <!-- 공항 ↔ 시내 -->
+      <div class="reveal mb-12">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <iconify-icon icon="ph:airplane-tilt-bold" class="text-sakura-400"></iconify-icon>
+          공항 ↔ 시내 이동
+        </h3>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="w-10 h-10 rounded-xl bg-sakura-500/10 flex items-center justify-center mb-3">
+              <iconify-icon icon="solar:tram-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <h4 class="text-sm font-bold text-white mb-1">라피트 특급</h4>
+            <p class="text-xs text-koi-400 mb-2">난카이선 · 35~40분</p>
+            <p class="text-xs text-slate-400">전 좌석 지정석. 가장 편안하지만 배차 간격 30분.</p>
+          </div>
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="w-10 h-10 rounded-xl bg-wisteria-500/10 flex items-center justify-center mb-3">
+              <iconify-icon icon="solar:tram-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <h4 class="text-sm font-bold text-white mb-1">공항 급행</h4>
+            <p class="text-xs text-koi-400 mb-2">난카이선 · 45~50분</p>
+            <p class="text-xs text-slate-400">저렴하고 배차 짧지만 서서 갈 수도 있음.</p>
+          </div>
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="w-10 h-10 rounded-xl bg-koi-500/10 flex items-center justify-center mb-3">
+              <iconify-icon icon="solar:bus-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <h4 class="text-sm font-bold text-white mb-1">공항 리무진 버스</h4>
+            <p class="text-xs text-koi-400 mb-2">약 50~60분</p>
+            <p class="text-xs text-slate-400">짐이 많을 때 유리. 시내 주요 호텔 앞까지 한 번에.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 추천 교통 패스 -->
+      <div class="reveal glass-card rounded-3xl p-6 sm:p-8 glow-koi">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-2xl bg-koi-500/10 flex items-center justify-center">
+            <iconify-icon icon="solar:ticket-bold-duotone" class="text-2xl text-koi-400"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">추천 교통 패스</h3>
+            <p class="text-sm text-slate-400">조이패스 (Joy Pass)</p>
+          </div>
+        </div>
+        <p class="text-sm text-slate-300 leading-relaxed">교토 당일치기가 포함되어 있으므로 오사카 주유패스보다 <strong class="text-koi-300">조이패스(Joy Pass)</strong>를 추천합니다. 일주일간 오사카/교토/고베 명소 입장권 또는 백화점 1,500엔 금액권 등 3가지 중 선택 가능.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 쇼핑 가이드 ==================== -->
+  <section id="shopping" class="relative py-24 sm:py-32">
+    <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-wisteria-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase text-wisteria-400 mb-3">Shopping</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white">쇼핑 가이드</h2>
+      </div>
+
+      <!-- 필수 구매 아이템 -->
+      <div class="reveal mb-12">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <iconify-icon icon="solar:checklist-bold-duotone" class="text-sakura-400"></iconify-icon>
+          필수 구매 아이템
+        </h3>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <h4 class="text-sm font-bold text-sakura-300 mb-3 flex items-center gap-2">
+              <iconify-icon icon="solar:heart-bold-duotone" class="text-sakura-400"></iconify-icon>
+              뷰티 / 의약품
+            </h4>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-sakura-400 flex-shrink-0"></iconify-icon>
+                메디힐 티트리 앰플 마스크
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-sakura-400 flex-shrink-0"></iconify-icon>
+                소화 효소
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-sakura-400 flex-shrink-0"></iconify-icon>
+                바닐라코 클렌징 밤
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-sakura-400 flex-shrink-0"></iconify-icon>
+                브링그린 토너 패드
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-sakura-400 flex-shrink-0"></iconify-icon>
+                로라 메르시에 아이섀도우
+              </li>
+            </ul>
+          </div>
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <h4 class="text-sm font-bold text-koi-300 mb-3 flex items-center gap-2">
+              <iconify-icon icon="solar:bag-4-bold-duotone" class="text-koi-400"></iconify-icon>
+              간식 / 패션
+            </h4>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-koi-400 flex-shrink-0"></iconify-icon>
+                알포트 초콜릿
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-koi-400 flex-shrink-0"></iconify-icon>
+                킷캣 와사비맛
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-koi-400 flex-shrink-0"></iconify-icon>
+                레드윙 부츠
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-koi-400 flex-shrink-0"></iconify-icon>
+                슈프림 / 스투시 스트릿 의류
+              </li>
+              <li class="flex items-center gap-2 text-xs text-slate-300">
+                <iconify-icon icon="solar:check-circle-bold" class="text-koi-400 flex-shrink-0"></iconify-icon>
+                바오바오 백 (오픈런 필수)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 추천 쇼핑 스팟 -->
+      <div class="reveal">
+        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+          <iconify-icon icon="solar:map-point-wave-bold-duotone" class="text-wisteria-400"></iconify-icon>
+          추천 쇼핑 스팟
+        </h3>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-koi-500/10 flex items-center justify-center">
+                <iconify-icon icon="solar:buildings-bold-duotone" class="text-koi-400"></iconify-icon>
+              </div>
+              <h4 class="text-sm font-bold text-white">우메다 일대</h4>
+            </div>
+            <p class="text-xs text-koi-300 mb-2">교토 다녀오는 날 추천</p>
+            <ul class="space-y-1.5">
+              <li class="text-xs text-slate-400">한큐 백화점 본점/한큐 맨즈 (5% 할인)</li>
+              <li class="text-xs text-slate-400">루쿠아(LUCUA)</li>
+              <li class="text-xs text-slate-400">그랜드 프론트 오사카</li>
+            </ul>
+          </div>
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-sakura-500/10 flex items-center justify-center">
+                <iconify-icon icon="solar:streets-map-point-bold-duotone" class="text-sakura-400"></iconify-icon>
+              </div>
+              <h4 class="text-sm font-bold text-white">신사이바시 / 오렌지 ST</h4>
+            </div>
+            <p class="text-xs text-sakura-300 mb-2">호텔 근처 도보권</p>
+            <ul class="space-y-1.5">
+              <li class="text-xs text-slate-400">파르코 (휴먼메이드, 포터)</li>
+              <li class="text-xs text-slate-400">다이마루 (5% 외국인 할인)</li>
+              <li class="text-xs text-slate-400">오렌지 스트리트 편집샵</li>
+            </ul>
+          </div>
+          <div class="glass-card rounded-2xl p-5 card-hover">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-wisteria-500/10 flex items-center justify-center">
+                <iconify-icon icon="solar:shop-2-bold-duotone" class="text-wisteria-400"></iconify-icon>
+              </div>
+              <h4 class="text-sm font-bold text-white">돈키호테</h4>
+            </div>
+            <p class="text-xs text-wisteria-300 mb-2">한산한 미도스지점 추천</p>
+            <ul class="space-y-1.5">
+              <li class="text-xs text-slate-400">도톤보리점보다 한산</li>
+              <li class="text-xs text-slate-400">24시간 영업</li>
+              <li class="text-xs text-slate-400">면세 카운터 쾌적</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 여행 팁 ==================== -->
+  <section id="tips" class="relative py-24 sm:py-32">
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-koi-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center mb-16">
+        <p class="text-sm font-semibold tracking-widest uppercase text-koi-400 mb-3">Travel Tips</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white">여행 팁</h2>
+      </div>
+
+      <div class="reveal grid gap-4 sm:grid-cols-2 max-w-4xl mx-auto">
+        <div class="glass-card rounded-2xl p-5 card-hover">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-koi-500/10 flex items-center justify-center flex-shrink-0">
+              <iconify-icon icon="solar:wallet-money-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white mb-1">현금 결제 준비</h4>
+              <p class="text-xs text-slate-400">로컬 맛집은 현금만 받는 곳이 여전히 많음. 충분한 엔화를 미리 준비하세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 card-hover">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-sakura-500/10 flex items-center justify-center flex-shrink-0">
+              <iconify-icon icon="solar:card-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white mb-1">신용카드 탭 투 라이드</h4>
+              <p class="text-xs text-slate-400">스이카/이코카 없이 비자/마스터 카드를 대중교통 단말기에 터치해 바로 결제 가능.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 card-hover">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-wisteria-500/10 flex items-center justify-center flex-shrink-0">
+              <iconify-icon icon="solar:bill-list-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white mb-1">면세 제도 변경 (2026년 11월~)</h4>
+              <p class="text-xs text-slate-400">매장에서 세금 포함 결제 후, 출국 시 공항 키오스크에서 환급 방식으로 변경 예정. 공항에 여유롭게 도착하세요.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 card-hover">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+              <iconify-icon icon="solar:buildings-2-bold-duotone" class="text-red-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white mb-1">숙박세 인상 (2026년)</h4>
+              <p class="text-xs text-slate-400">2026년 3월부터 교토 등에서 숙박세가 2배 인상. 체크인 시 현장에서 추가 결제가 필요합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 card-hover sm:col-span-2">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+              <iconify-icon icon="solar:danger-triangle-bold-duotone" class="text-red-400 text-lg"></iconify-icon>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-white mb-1">우범 지대 주의</h4>
+              <p class="text-xs text-slate-400">신이마미야역·도부츠엔마에역 주변(아이린지구)은 숙소를 피할 것. 낮에 통과하는 정도는 괜찮지만, 밤늦게 혼자 돌아다니는 것은 지양하세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="relative py-24 sm:py-32">
+    <div class="absolute inset-0">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sakura-500/5 rounded-full blur-[120px]"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="reveal glass-strong rounded-3xl p-8 sm:p-12 glow-sakura">
+        <iconify-icon icon="ph:airplane-tilt-bold" class="text-4xl text-sakura-400 mb-6"></iconify-icon>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4">즐거운 오사카 여행 되세요!</h2>
+        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+          2026년 5월 9일부터 12일까지, 3박 4일간의 완벽한 여행이 기다립니다.
+          USJ 25주년, 교토의 아름다움, 오사카의 맛을 마음껏 즐기세요.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#hero" class="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-sakura-500 to-sakura-600 text-white font-bold text-base shadow-lg shadow-sakura-500/20 hover:shadow-sakura-500/30 hover:scale-[1.02] transition-all duration-300">
+            <iconify-icon icon="solar:arrow-up-bold" class="text-lg"></iconify-icon>
+            맨 위로
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 푸터 ==================== -->
+  <footer class="border-t border-white/5 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 sm:grid-cols-3 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <iconify-icon icon="ph:airplane-tilt-bold" class="text-sakura-400 text-lg"></iconify-icon>
+            <span class="text-white font-bold">오사카 2026</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed">2026년 5월 9일~12일<br />3박 4일 · 이스타항공<br />칸데오 호텔 난바</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">일정</p>
+          <div class="space-y-1.5">
+            <a href="#day1" class="block text-xs text-slate-500 hover:text-white transition">Day 1 — 도톤보리·신사이바시</a>
+            <a href="#day2" class="block text-xs text-slate-500 hover:text-white transition">Day 2 — 교토 당일치기</a>
+            <a href="#day3" class="block text-xs text-slate-500 hover:text-white transition">Day 3 — USJ 종일</a>
+            <a href="#day4" class="block text-xs text-slate-500 hover:text-white transition">Day 4 — 출발</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">가이드</p>
+          <div class="space-y-1.5">
+            <a href="#flight" class="block text-xs text-slate-500 hover:text-white transition">항공·숙소</a>
+            <a href="#transport" class="block text-xs text-slate-500 hover:text-white transition">교통 가이드</a>
+            <a href="#shopping" class="block text-xs text-slate-500 hover:text-white transition">쇼핑 가이드</a>
+            <a href="#tips" class="block text-xs text-slate-500 hover:text-white transition">여행 팁</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-6 text-center">
+        <p class="text-xs text-slate-600">오사카 여행 가이드 2026 · 즐거운 여행 되세요</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== 자바스크립트 ==================== -->
+  <script>
+    // 스크롤 애니메이션 (IntersectionObserver)
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // 네비게이션 스크롤 효과
+    const nav = document.getElementById('nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 80) {
+        nav.classList.add('glass-strong');
+      } else {
+        nav.classList.remove('glass-strong');
+      }
+      lastScroll = currentScroll;
+    });
+
+    // 모바일 메뉴 토글
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // 탭 기능
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetTab = btn.dataset.tab;
+        // 모든 탭 비활성화
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        // 선택된 탭 활성화
+        btn.classList.add('active');
+        document.getElementById(`tab-${targetTab}`).classList.add('active');
+        // 탭 내부 reveal 요소 재관찰
+        document.getElementById(`tab-${targetTab}`).querySelectorAll('.reveal').forEach(el => {
+          el.classList.add('visible');
+        });
+      });
+    });
+
+    // 네비게이션 활성 링크 표시
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const activeLinkObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(section => activeLinkObserver.observe(section));
+  </script>
+
+</body>
+</html>
