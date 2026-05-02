@@ -119,6 +119,86 @@
     .nav-link { position: relative; transition: color 0.3s ease; }
     .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: linear-gradient(90deg, #f472b6, #ffa726); transition: width 0.3s ease, left 0.3s ease; border-radius: 1px; }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; left: 0; }
+
+    /* 손그림 일러스트 카드 */
+    .illust-frame {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255, 248, 240, 0.96), rgba(254, 241, 247, 0.94));
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 30px 80px -20px rgba(244, 114, 182, 0.18), 0 0 0 1px rgba(255, 167, 38, 0.08) inset;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      cursor: zoom-in;
+    }
+    .illust-frame:hover { transform: translateY(-3px) scale(1.005); box-shadow: 0 40px 100px -20px rgba(244, 114, 182, 0.28); }
+    .illust-frame img { display: block; width: 100%; height: auto; }
+    .illust-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, transparent 70%, rgba(10, 10, 26, 0.18));
+      pointer-events: none;
+    }
+    .illust-zoom-hint {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      width: 2rem; height: 2rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(10, 10, 26, 0.6);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      color: white;
+      opacity: 0; transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+    .illust-frame:hover .illust-zoom-hint { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(5, 5, 15, 0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 2rem 1rem;
+      animation: lbFadeIn 0.25s ease;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: min(95vw, 1100px);
+      max-height: 90vh;
+      width: auto; height: auto;
+      border-radius: 1rem;
+      box-shadow: 0 40px 100px -10px rgba(0, 0, 0, 0.6);
+      animation: lbZoom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      width: 2.75rem; height: 2.75rem;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .lightbox-close:hover { background: rgba(244, 114, 182, 0.25); transform: scale(1.05); }
+    .lightbox-caption {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.75rem;
+    }
+    @keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes lbZoom { from { transform: scale(0.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   </style>
 </head>
 <body class="antialiased">
@@ -131,13 +211,14 @@
           <iconify-icon icon="ph:airplane-tilt-bold" class="text-sakura-400 text-xl"></iconify-icon>
           <span class="hidden sm:inline">오사카 2026</span>
         </a>
-        <div class="hidden md:flex items-center gap-6 text-sm text-slate-400">
+        <div class="hidden md:flex items-center gap-4 text-sm text-slate-400">
+          <a href="#overview" class="nav-link hover:text-white">한눈에 보기</a>
+          <a href="#checklist" class="nav-link hover:text-white">체크리스트</a>
           <a href="#flight" class="nav-link hover:text-white">항공·숙소</a>
           <a href="#day1" class="nav-link hover:text-white">Day 1</a>
           <a href="#day2" class="nav-link hover:text-white">Day 2</a>
-          <a href="#day3" class="nav-link hover:text-white">Day 3 USJ</a>
+          <a href="#day3" class="nav-link hover:text-white">Day 3</a>
           <a href="#day4" class="nav-link hover:text-white">Day 4</a>
-          <a href="#transport" class="nav-link hover:text-white">교통</a>
           <a href="#shopping" class="nav-link hover:text-white">쇼핑</a>
           <a href="#tips" class="nav-link hover:text-white">팁</a>
         </div>
@@ -149,6 +230,8 @@
     <!-- 모바일 메뉴 -->
     <div id="mobile-menu" class="md:hidden hidden glass-strong">
       <div class="px-4 py-4 space-y-2">
+        <a href="#overview" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">한눈에 보기 (미니맵)</a>
+        <a href="#checklist" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">출발 전 체크리스트</a>
         <a href="#flight" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">항공·숙소</a>
         <a href="#day1" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">Day 1 도톤보리</a>
         <a href="#day2" class="block py-2 px-3 rounded-lg text-sm text-slate-300 hover:text-white hover:bg-white/5 transition">Day 2 교토</a>
@@ -235,6 +318,86 @@
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 text-xs animate-bounce">
       <span>아래로 스크롤</span>
       <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="text-lg"></iconify-icon>
+    </div>
+  </section>
+
+  <!-- ==================== 한눈에 보기 (일러스트 미니맵) ==================== -->
+  <section id="overview" class="relative py-24 sm:py-32">
+    <div class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-koi-500/5 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-sakura-500/5 rounded-full blur-[120px]"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center mb-12">
+        <p class="text-sm font-semibold tracking-widest uppercase text-sakura-400 mb-3">Hand-Drawn Itinerary</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">한눈에 보는 오사카 여행</h2>
+        <p class="text-base text-slate-400">손그림 일러스트로 정리한 3박 4일 동선 · 클릭해서 크게 보기</p>
+      </div>
+
+      <!-- 메인 풀맵 -->
+      <div class="reveal max-w-4xl mx-auto mb-10">
+        <div class="illust-frame" data-lightbox-src="osaka.png" data-lightbox-caption="오사카 여행 전체 일정 미니맵">
+          <div class="illust-zoom-hint">
+            <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+          </div>
+          <img src="osaka.png" alt="오사카 여행 전체 일정 미니맵 — 칸데오 호텔 중심으로 4일간 동선" loading="lazy" />
+        </div>
+        <p class="text-xs text-slate-500 text-center mt-4">CANDEO HOTELS 난바 중심 · 도톤보리·신사이바시 도보권 · 교토 한큐선 · USJ 유니버설 시티역</p>
+      </div>
+
+      <!-- Day 1~4 4-up 그리드 -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+        <div class="reveal">
+          <div class="illust-frame" data-lightbox-src="day1.png" data-lightbox-caption="Day 1 · 5/9 토 — 도착 + 도톤보리 + 리버 크루즈">
+            <div class="illust-zoom-hint">
+              <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+            </div>
+            <img src="day1.png" alt="Day 1 미니맵 — 도착 + 도톤보리 + 리버 크루즈" loading="lazy" />
+          </div>
+          <div class="text-center mt-3">
+            <p class="text-xs font-bold text-sakura-300">Day 1 · 5/9 토</p>
+            <p class="text-[11px] text-slate-500 mt-0.5">도톤보리 · 리버 크루즈</p>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="illust-frame" data-lightbox-src="day2.png" data-lightbox-caption="Day 2 · 5/10 일 — 교토 당일치기">
+            <div class="illust-zoom-hint">
+              <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+            </div>
+            <img src="day2.png" alt="Day 2 미니맵 — 교토 당일치기" loading="lazy" />
+          </div>
+          <div class="text-center mt-3">
+            <p class="text-xs font-bold text-wisteria-300">Day 2 · 5/10 일</p>
+            <p class="text-[11px] text-slate-500 mt-0.5">교토 풀데이</p>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <div class="illust-frame" data-lightbox-src="day3.png" data-lightbox-caption="Day 3 · 5/11 월 — USJ 종일">
+            <div class="illust-zoom-hint">
+              <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+            </div>
+            <img src="day3.png" alt="Day 3 미니맵 — USJ 종일" loading="lazy" />
+          </div>
+          <div class="text-center mt-3">
+            <p class="text-xs font-bold text-koi-300">Day 3 · 5/11 월</p>
+            <p class="text-[11px] text-slate-500 mt-0.5">USJ 종일</p>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-3">
+          <div class="illust-frame" data-lightbox-src="day4.png" data-lightbox-caption="Day 4 · 5/12 화 — 출국">
+            <div class="illust-zoom-hint">
+              <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+            </div>
+            <img src="day4.png" alt="Day 4 미니맵 — 출국" loading="lazy" />
+          </div>
+          <div class="text-center mt-3">
+            <p class="text-xs font-bold text-slate-300">Day 4 · 5/12 화</p>
+            <p class="text-[11px] text-slate-500 mt-0.5">쿠로몬 · 출국</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -326,7 +489,7 @@
             </div>
             <div>
               <h3 class="text-xl font-bold text-white">CANDEO HOTELS</h3>
-              <p class="text-sm text-slate-400">카ンデオホテルズ大阪なんば</p>
+              <p class="text-sm text-slate-400">カンデオホテルズ大阪なんば</p>
             </div>
           </div>
 
@@ -386,6 +549,354 @@
     </div>
   </section>
 
+  <!-- ==================== 출발 전 체크리스트 ==================== -->
+  <section id="checklist" class="relative py-24 sm:py-32">
+    <div class="absolute top-0 left-1/3 w-[500px] h-[500px] bg-sakura-500/4 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 right-1/3 w-[400px] h-[400px] bg-koi-500/4 rounded-full blur-[120px]"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center mb-12">
+        <p class="text-sm font-semibold tracking-widest uppercase text-sakura-400 mb-3">Pre-Trip Checklist</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">출발 전 체크리스트</h2>
+        <p class="text-base text-slate-400">D-7 → D-day · 우선순위별로 정리</p>
+      </div>
+
+      <!-- 안내 배너 -->
+      <div class="reveal glass-strong rounded-2xl p-5 mb-10 max-w-3xl mx-auto border border-sakura-400/20">
+        <div class="flex items-start gap-3">
+          <iconify-icon icon="solar:bell-bing-bold-duotone" class="text-sakura-400 text-2xl flex-shrink-0 mt-0.5"></iconify-icon>
+          <div>
+            <p class="text-sm font-bold text-white mb-1">오늘 안에 필수</p>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong class="text-sakura-300">하리쥬·카니도라쿠 예약</strong> + <strong class="text-sakura-300">Visit Japan Web</strong> + <strong class="text-sakura-300">eSIM 구매</strong> · 숙소·USJ 입장권/익스프레스는 이미 예약 완료
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우선순위 4단계 그리드 -->
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- 🔴 즉시 (D-7 ~ D-6) -->
+        <div class="reveal glass-card rounded-3xl p-6 sm:p-7 card-hover glow-sakura">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-red-500/15 flex items-center justify-center">
+              <iconify-icon icon="solar:fire-bold-duotone" class="text-2xl text-red-400"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-red-400">Priority 1</p>
+              <h3 class="text-lg font-bold text-white">즉시 — D-7 ~ D-6</h3>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-bold text-sakura-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:chef-hat-bold-duotone"></iconify-icon>
+                식당 예약 (토요일 저녁이라 늦으면 못 잡음)
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">하리쥬 본점</strong> Day 1 (5/9 토) 18:30 — byFood / Tabelog</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">카니도라쿠 도톤보리 본점</strong> 19:30 — 공식 홈 / 오토리저브</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>(선택) <strong class="text-white">Café SKY 40</strong> Day 2 우메다 야경 코스 — 18:30 도착 권장</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold text-sakura-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:passport-bold-duotone"></iconify-icon>
+                입국 · 항공
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">Visit Japan Web</strong> 사전 등록 (입국심사 + 세관 QR) · 동행자 분도 함께</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>여권 유효기간 6개월 이상 확인</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>이스타항공 보딩 패스 발급 (24시간 전 가능)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold text-sakura-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:wi-fi-router-bold-duotone"></iconify-icon>
+                통신
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">eSIM 또는 포켓 와이파이</strong> 구매 — Klook / 마이리얼트립 (eSIM 가성비 + 즉시 적용)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🟡 D-5 ~ D-3 -->
+        <div class="reveal reveal-delay-1 glass-card rounded-3xl p-6 sm:p-7 card-hover glow-koi">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-koi-500/15 flex items-center justify-center">
+              <iconify-icon icon="solar:bolt-bold-duotone" class="text-2xl text-koi-400"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-koi-400">Priority 2</p>
+              <h3 class="text-lg font-bold text-white">D-5 ~ D-3</h3>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-bold text-koi-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:tram-bold-duotone"></iconify-icon>
+                교통 사전권
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">난카이 라피트 특급권</strong> 사전 구매 (Klook 라피트+메트로 1일권 ¥1,500)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">모바일 ICOCA</strong> (Apple Pay) 또는 실물 ICOCA 충전</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>(선택) <strong class="text-white">간사이 스루 패스 2일권</strong> — Day 2 교토 자유 이동 검토</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold text-koi-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:wallet-money-bold-duotone"></iconify-icon>
+                결제 · 돈
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">엔화 환전 ¥30,000~50,000</strong> (도톤보리·교토 노포·쿠로몬 현금만)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>신용카드 해외 결제 활성화 (비자/마스터 둘 다)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>카드 한도 상향 검토 (USJ + 식당 디너 대비)</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold text-koi-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:gamepad-bold-duotone"></iconify-icon>
+                USJ 사전 준비
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>USJ 공식 앱 설치 + 입장권 QR 등록</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>익스프레스 패스 7 종이 인쇄</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>주술회전 × Story Ride 5/11 운영 형태 확인 (1부→2부 전환 시점)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>닌텐도 월드 입장 확약권 익스프레스 포함 재확인</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold text-koi-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:smartphone-bold-duotone"></iconify-icon>
+                앱 · 즐겨찾기
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>Google Maps 식당 즐겨찾기</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>NAVITIME 또는 Yahoo! 노선정보 (일본 대중교통 베스트)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>파파고 + 구글 번역 오프라인 일본어, Tabelog 앱</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🟢 D-2 ~ D-1 -->
+        <div class="reveal glass-card rounded-3xl p-6 sm:p-7 card-hover glow-wisteria">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-green-500/15 flex items-center justify-center">
+              <iconify-icon icon="solar:bag-4-bold-duotone" class="text-2xl text-green-400"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-green-400">Priority 3</p>
+              <h3 class="text-lg font-bold text-white">D-2 ~ D-1</h3>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <p class="text-xs font-bold text-green-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:suitcase-tag-bold-duotone"></iconify-icon>
+                짐
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>5월 오사카 18~22°C — 반팔 + 얇은 가디건/자켓</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">운동화</strong> (교토 산넨자카·USJ 종일 필수)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>우산 또는 우비 (5월 강수 가능)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>보조 배터리 + 충전기 + <strong class="text-white">A타입 110V 어댑터</strong></span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>USJ용 가벼운 백팩 (라이드 로커 보관용)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span><strong class="text-white">멀미약</strong> (포비든 저니·플라잉 다이노) · 진통제·소화제·반창고</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold text-green-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:branching-paths-up-bold-duotone"></iconify-icon>
+                일정 분기 사전 결정
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>Day 1 점심: 미즈노 vs 다루마</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>Day 1 저녁: 하리쥬 vs 카니도라쿠 (예약 결과 따라)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>Day 4 모닝: 옵션 1 (편의점·카페) vs 옵션 2 (쿠로몬)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>Day 2 저녁 분기는 5/10 17:30 현장 결정 OK</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="text-xs font-bold text-green-300 mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:shield-keyhole-bold-duotone"></iconify-icon>
+                백업 · 안전
+              </p>
+              <ul class="space-y-1.5 pl-1">
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>여권 사진 디지털 백업 + 종이 사본 1장</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>호텔 주소·전화 메모: <code class="text-[10px] text-koi-300">〒542-0083 / 06-6212-2200</code></span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>여행자 보험 가입 (USJ 라이드·해외 의료비 대비)</span>
+                </li>
+                <li class="flex items-start gap-2 text-xs text-slate-300">
+                  <iconify-icon icon="solar:square-bold" class="text-slate-600 mt-0.5 flex-shrink-0"></iconify-icon>
+                  <span>가족 비상 연락처 + 주오사카 한국 영사관 번호</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🟢 D-day -->
+        <div class="reveal reveal-delay-1 glass-card rounded-3xl p-6 sm:p-7 card-hover">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-wisteria-500/15 flex items-center justify-center">
+              <iconify-icon icon="solar:plain-bold-duotone" class="text-2xl text-wisteria-400"></iconify-icon>
+            </div>
+            <div>
+              <p class="text-[10px] font-bold tracking-widest uppercase text-wisteria-400">D-day</p>
+              <h3 class="text-lg font-bold text-white">5/9 출발 당일</h3>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+            오프라인에서도 보이도록 캡처해두기. 입국 심사·체크인·USJ 입장에서 데이터 끊겨도 안전.
+          </p>
+
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-3 glass rounded-xl p-3">
+              <iconify-icon icon="solar:qr-code-bold-duotone" class="text-wisteria-400 text-lg mt-0.5 flex-shrink-0"></iconify-icon>
+              <div>
+                <p class="text-xs font-bold text-white">Visit Japan Web QR</p>
+                <p class="text-[11px] text-slate-400">입국심사 + 세관 QR 코드 캡처</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 glass rounded-xl p-3">
+              <iconify-icon icon="solar:ticket-bold-duotone" class="text-wisteria-400 text-lg mt-0.5 flex-shrink-0"></iconify-icon>
+              <div>
+                <p class="text-xs font-bold text-white">보딩 패스</p>
+                <p class="text-[11px] text-slate-400">이스타항공 ZE611 보딩 패스 캡처</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 glass rounded-xl p-3">
+              <iconify-icon icon="solar:bed-bold-duotone" class="text-wisteria-400 text-lg mt-0.5 flex-shrink-0"></iconify-icon>
+              <div>
+                <p class="text-xs font-bold text-white">호텔 예약 확인서</p>
+                <p class="text-[11px] text-slate-400">CANDEO 난바 체크인 시 제시</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 glass rounded-xl p-3">
+              <iconify-icon icon="solar:gamepad-bold-duotone" class="text-wisteria-400 text-lg mt-0.5 flex-shrink-0"></iconify-icon>
+              <div>
+                <p class="text-xs font-bold text-white">USJ 입장권 · 익스프레스 QR</p>
+                <p class="text-[11px] text-slate-400">Day 3 입장 시 종이 출력본도 함께</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== DAY 1 ==================== -->
   <section id="day1" class="relative py-24 sm:py-32">
     <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-sakura-500/4 rounded-full blur-[120px]"></div>
@@ -397,7 +908,18 @@
           5월 9일 토요일
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 1</h2>
-        <p class="text-lg text-slate-400">도착 + 도톤보리 · 신사이바시</p>
+        <p class="text-lg text-slate-400">도착 + 도톤보리 · 리버 크루즈</p>
+      </div>
+
+      <!-- 미니맵 -->
+      <div class="reveal max-w-md mx-auto mb-12">
+        <div class="illust-frame" data-lightbox-src="day1.png" data-lightbox-caption="Day 1 · 5/9 토 — 도착 + 도톤보리 + 리버 크루즈">
+          <div class="illust-zoom-hint">
+            <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+          </div>
+          <img src="day1.png" alt="Day 1 미니맵 — 도착 + 도톤보리 + 리버 크루즈" loading="lazy" />
+        </div>
+        <p class="text-[11px] text-slate-500 text-center mt-3">손그림 미니맵 · 클릭해서 크게 보기</p>
       </div>
 
       <!-- 타임라인 -->
@@ -447,17 +969,39 @@
             </div>
           </div>
 
-          <!-- 오후 -->
+          <!-- 14:00 — 늦은 점심 (택1) -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:streets-map-point-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:chef-hat-heart-bold-duotone" class="text-green-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-wisteria-400">오후</span>
-                <span class="text-xs text-slate-500">도톤보리 + 신사이바시</span>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm font-bold text-green-400">14:00</span>
+                <span class="text-xs text-slate-500">늦은 점심 — 도톤보리 택1</span>
               </div>
-              <p class="text-sm text-slate-300 leading-relaxed">호텔 도보권인 <strong class="text-white">도톤보리</strong>와 <strong class="text-white">신사이바시스지 상점가</strong> 산책. 글리코상 기념 촬영. 쿠시카츠·타코야키·오코노미야키 맛집에서 늦은 점심.</p>
+
+              <div class="grid sm:grid-cols-2 gap-3 mt-3">
+                <!-- 미즈노 -->
+                <a href="https://insideosaka.com/mizuno/" target="_blank" rel="noopener" class="block glass rounded-xl p-4 hover:bg-white/5 transition group">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">오코노미야키</span>
+                    <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
+                  </div>
+                  <p class="text-sm font-bold text-white mb-1">미즈노 美津の</p>
+                  <p class="text-xs text-koi-300 mb-2">야마이모야키(밀가루 X) · 믹스야키 · ¥1,500~2,500</p>
+                  <p class="text-[11px] text-slate-400 leading-relaxed">11:00~22:00 매일 · <strong class="text-sakura-300">미슐랭 빕그루망 6년 연속</strong> · 1945년 노포 · 줄 김 (회전 빠름) · 예약 불가</p>
+                </a>
+                <!-- 다루마 -->
+                <a href="https://insideosaka.com/kushikatsu-daruma/" target="_blank" rel="noopener" class="block glass rounded-xl p-4 hover:bg-white/5 transition group">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">쿠시카츠</span>
+                    <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
+                  </div>
+                  <p class="text-sm font-bold text-white mb-1">쿠시카츠 다루마 도톤보리</p>
+                  <p class="text-xs text-koi-300 mb-2">도톤보리 세트 ¥1,800 (15개) · ¥1,500~2,500</p>
+                  <p class="text-[11px] text-slate-400 leading-relaxed">평일 11:30~22:30, 주말 10:30~22:30 · 1929년 노포 · <strong class="text-sakura-300">"디핑 소스 한 번만" 룰</strong></p>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -469,23 +1013,108 @@
             <div class="glass-card rounded-2xl p-5 sm:p-6">
               <div class="flex items-center gap-2 mb-2">
                 <span class="text-sm font-bold text-sakura-400">15:00</span>
-                <span class="text-xs text-slate-500">체크인 + 휴식</span>
+                <span class="text-xs text-slate-500">체크인 + 자유 시간</span>
               </div>
-              <p class="text-sm text-slate-300">호텔 체크인 → 짐 정리 + <strong class="text-white">칸데오 호텔 사우나</strong>에서 여독 풀기</p>
+              <p class="text-sm text-slate-300 mb-2">짐 정리 + 카페 (택1)</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[11px] px-2.5 py-1 rounded-full glass text-slate-300">☕ Mel Coffee Roasters (호리에)</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-full glass text-slate-300">☕ Streamer Coffee 신사이바시</span>
+                <span class="text-[11px] px-2.5 py-1 rounded-full glass text-slate-300">☕ 호시노커피 도톤보리</span>
+              </div>
             </div>
           </div>
 
-          <!-- 저녁 -->
+          <!-- 17:00 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:streets-map-point-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-wisteria-400">17:00</span>
+                <span class="text-xs text-slate-500">신사이바시 · 도톤보리 산책</span>
+              </div>
+              <p class="text-sm text-slate-300 leading-relaxed"><strong class="text-white">신사이바시스지</strong>·<strong class="text-white">도톤보리</strong> 산책, <strong class="text-sakura-300">글리코상 인증샷</strong></p>
+            </div>
+          </div>
+
+          <!-- 18:30 — 저녁 (택1) -->
           <div class="reveal relative">
             <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:moon-stars-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-koi-400">저녁</span>
-                <span class="text-xs text-slate-500">야경 + 식사</span>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm font-bold text-koi-400">18:30</span>
+                <span class="text-xs text-slate-500">저녁 — 100년 노포 택1</span>
+                <span class="ml-auto px-2 py-0.5 rounded-md text-[10px] bg-red-500/15 text-red-400 border border-red-400/20">예약 필수</span>
               </div>
-              <p class="text-sm text-slate-300 leading-relaxed"><strong class="text-white">도톤보리 리버 크루즈</strong>로 야경 감상. 스키야키 또는 장어덮밥으로 저녁 식사.</p>
+
+              <div class="grid sm:grid-cols-2 gap-3">
+                <!-- 하리쥬 -->
+                <a href="https://autoreserve.com/en/restaurants/A3QwSTbJApTRitK97bE9" target="_blank" rel="noopener" class="block glass rounded-xl p-4 hover:bg-white/5 transition group">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">스키야키</span>
+                    <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
+                  </div>
+                  <p class="text-sm font-bold text-white mb-1">하리쥬 본점 はり重</p>
+                  <p class="text-xs text-koi-300 mb-2">디너 코스 ¥8,000~ · 일본 흑우</p>
+                  <p class="text-[11px] text-slate-400 leading-relaxed">11:30~21:00 · 화요일 휴무 (5/9 토 OK) · <strong class="text-sakura-300">1919년 100년 노포</strong> · 06-6211-7777</p>
+                </a>
+                <!-- 카니도라쿠 -->
+                <a href="https://douraku.co.jp/kansai/honten/" target="_blank" rel="noopener" class="block glass rounded-xl p-4 hover:bg-white/5 transition group">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">게요리</span>
+                    <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
+                  </div>
+                  <p class="text-sm font-bold text-white mb-1">카니도라쿠 도톤보리 본점 かに道楽</p>
+                  <p class="text-xs text-koi-300 mb-2">코스 ¥8,000~16,000 · 게 풀코스</p>
+                  <p class="text-[11px] text-slate-400 leading-relaxed">11:00~22:00 (LO 21:00) · 1960년 창업 · 도톤보리 강뷰 · <strong class="text-sakura-300">움직이는 게 간판</strong></p>
+                </a>
+              </div>
+              <p class="text-[11px] text-slate-500 mt-3 leading-relaxed">💡 <strong class="text-koi-300">5/9 토요일 저녁</strong>은 사전 예약 거의 필수. 출발 1주 전 예약 권장.</p>
+            </div>
+          </div>
+
+          <!-- 20:00 리버 크루즈 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:ship-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">20:00</span>
+                <span class="text-xs text-slate-500">도톤보리 리버 크루즈</span>
+              </div>
+              <p class="text-sm text-slate-300 leading-relaxed">¥1,500 · 20분 · <strong class="text-sakura-300">야경 베스트 코스</strong>. 글리코상이 가장 화려할 시간대.</p>
+            </div>
+          </div>
+
+          <!-- 21:30 호젠지 요코초 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:wineglass-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-wisteria-400">21:30</span>
+                <span class="text-xs text-slate-500">호젠지 요코초 한잔</span>
+              </div>
+              <p class="text-sm text-slate-300 leading-relaxed"><strong class="text-white">Bar Augusta Tarogen</strong> 위스키 바, <strong class="text-white">호젠지 산페이</strong> 어묵. 좁은 골목·이끼 낀 호젠지 분위기 만끽.</p>
+            </div>
+          </div>
+
+          <!-- 22:00 호텔 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:bed-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-koi-400">22:00</span>
+                <span class="text-xs text-slate-500">호텔 복귀 · 취침</span>
+              </div>
+              <p class="text-sm text-slate-300">USJ 06:30 기상 대비 — 일찍 자는 게 정답</p>
             </div>
           </div>
         </div>
@@ -498,13 +1127,37 @@
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-wisteria-500/4 rounded-full blur-[120px]"></div>
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- 섹션 헤더 -->
-      <div class="reveal text-center mb-16">
+      <div class="reveal text-center mb-12">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-wisteria-400 mb-4">
           <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-base"></iconify-icon>
           5월 10일 일요일
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 2</h2>
-        <p class="text-lg text-slate-400">교토 당일치기 + 우메다</p>
+        <p class="text-lg text-slate-400">교토 슬림 풀데이 — 후시미이나리 → 기요미즈 → 기온 → 니시키</p>
+      </div>
+
+      <!-- 미니맵 -->
+      <div class="reveal max-w-md mx-auto mb-12">
+        <div class="illust-frame" data-lightbox-src="day2.png" data-lightbox-caption="Day 2 · 5/10 일 — 교토 당일치기">
+          <div class="illust-zoom-hint">
+            <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+          </div>
+          <img src="day2.png" alt="Day 2 미니맵 — 교토 당일치기" loading="lazy" />
+        </div>
+        <p class="text-[11px] text-slate-500 text-center mt-3">손그림 미니맵 · 클릭해서 크게 보기</p>
+      </div>
+
+      <!-- 핵심 안내 -->
+      <div class="reveal max-w-3xl mx-auto mb-12 glass-strong rounded-2xl p-5 border border-koi-400/20">
+        <div class="flex items-start gap-3">
+          <iconify-icon icon="solar:danger-triangle-bold-duotone" class="text-koi-400 text-2xl flex-shrink-0 mt-0.5"></iconify-icon>
+          <div>
+            <p class="text-sm font-bold text-white mb-1">5/10 일요일 핵심 룰</p>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              기요미즈데라는 13시 이후 인파 폭발. <strong class="text-koi-300">13시 전에 빠지는 게 핵심</strong> — 점심을 기온에서 13:30에 늦게 먹는 이유. 키지 신우메다 본점 일요일 <strong class="text-red-400">휴무</strong>.
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- 타임라인 -->
@@ -512,87 +1165,283 @@
         <div class="relative pl-16 md:pl-20 space-y-8">
           <div class="timeline-line"></div>
 
-          <!-- 08:00 -->
+          <!-- 07:30 출발 -->
           <div class="reveal relative">
             <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:tram-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-wisteria-400">08:00</span>
-                <span class="text-xs text-slate-500">교토로 출발</span>
+                <span class="text-sm font-bold text-wisteria-400">07:30</span>
+                <span class="text-xs text-slate-500">호텔 출발</span>
               </div>
-              <p class="text-sm text-slate-300">호텔 출발 → 心斎橋역 미도스지선 → 梅田역 → <strong class="text-white">한큐 교토선</strong> → 河原町역 (약 1시간 10분)</p>
+              <p class="text-sm text-slate-300">난바 → 신이마미야 → <strong class="text-white">JR 나라선</strong> → 이나리역</p>
             </div>
           </div>
 
-          <!-- 오전 -->
+          <!-- 08:15 후시미이나리 -->
           <div class="reveal relative">
             <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:compass-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+              <iconify-icon icon="solar:gate-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-koi-400">오전</span>
-                <span class="text-xs text-slate-500">후시미이나리 신사</span>
+                <span class="text-sm font-bold text-koi-400">08:15</span>
+                <span class="text-xs text-slate-500">후시미이나리 신사 (산 중턱 1시간 30분)</span>
               </div>
-              <p class="text-sm text-slate-300"><strong class="text-white">후시미이나리 신사</strong> 방문. 이른 아침이 사람 적음. 천 개의 붉은 도리이가 이어지는 장관. 이후 게이한선으로 이동.</p>
+              <p class="text-sm text-slate-300 mb-3">천 개의 붉은 도리이. 이른 아침이 사람 적고 사진 베스트.</p>
+              <a href="https://www.vermillioncafe.com/" target="_blank" rel="noopener" class="block glass rounded-xl p-3 hover:bg-white/5 transition group">
+                <div class="flex items-center gap-2">
+                  <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">CAFE</span>
+                  <p class="text-xs font-bold text-white">Vermillion · espresso bar & info</p>
+                  <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
+                </div>
+                <p class="text-[11px] text-slate-400 mt-1">8:00~15:00 무휴 · 호수 옆 미니 카페 · 비건/베지 친화 · 산행 전후 커피</p>
+              </a>
             </div>
           </div>
 
-          <!-- 점심 -->
-          <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:chef-hat-heart-bold-duotone" class="text-green-400 text-lg"></iconify-icon>
-            </div>
-            <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-green-400">점심</span>
-                <span class="text-xs text-slate-500">니시키시장</span>
-              </div>
-              <p class="text-sm text-slate-300"><strong class="text-white">니시키시장</strong>에서 길거리 음식으로 점심. 교토의 부엌이라 불리는 400년 전통 시장.</p>
-            </div>
-          </div>
-
-          <!-- 오후 -->
+          <!-- 10:30 기요미즈 -->
           <div class="reveal relative">
             <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:waterdrops-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-sakura-400">오후</span>
-                <span class="text-xs text-slate-500">기요미즈데라 + 기온</span>
+                <span class="text-sm font-bold text-sakura-400">10:30</span>
+                <span class="text-xs text-slate-500">기요미즈데라 + 산넨자카·니넨자카 (2시간)</span>
               </div>
-              <p class="text-sm text-slate-300"><strong class="text-white">기요미즈데라</strong> 관람 + <strong class="text-white">기온 거리</strong> 산책. 전통 찻집과 게이샤 거리의 정취를 느끼며 여유롭게.</p>
+              <p class="text-sm text-slate-300 mb-3">케이한선 → 기요미즈고조역 → 도보. 산넨자카·니넨자카 골목 산책.</p>
+              <div class="space-y-2">
+                <a href="https://www.starbucks.com/store-locator/store/1018926/" target="_blank" rel="noopener" class="block glass rounded-xl p-3 hover:bg-white/5 transition group">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">STARBUCKS</span>
+                    <p class="text-xs font-bold text-white">스타벅스 닌넨자카 야사카 차야점</p>
+                    <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-1">8:00~20:00 매일 · 100년 가옥, 다다미 좌석 · <strong class="text-sakura-300">세계 최초 다다미 스타벅스</strong> (8시 진입 베스트)</p>
+                </a>
+                <div class="glass rounded-xl p-3">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">노포</span>
+                    <p class="text-xs font-bold text-white">카사기야 (산넨자카)</p>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-1">100년 노포 와라비모치</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 늦은 오후 -->
+          <!-- 13:30 기온 점심 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:bag-4-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:chef-hat-heart-bold-duotone" class="text-green-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-koi-400">늦은 오후</span>
-                <span class="text-xs text-slate-500">우메다 쇼핑</span>
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm font-bold text-green-400">13:30</span>
+                <span class="text-xs text-slate-500">기온 점심 (택1)</span>
               </div>
-              <p class="text-sm text-slate-300">한큐 가와라마치역 → 우메다 복귀. <strong class="text-white">한큐 백화점 · 루쿠아 · 그랜드 프론트 오사카</strong>에서 쇼핑 (바오바오 백 등).</p>
+              <div class="space-y-2">
+                <a href="https://tabelog.com/en/kyoto/A2601/A260301/26001384/" target="_blank" rel="noopener" class="block glass rounded-xl p-3 hover:bg-white/5 transition group">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">오코노미야키</span>
+                    <p class="text-xs font-bold text-white">잇센요쇼쿠 기온점 壹錢洋食</p>
+                    <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-1">일요일 10:30~22:00 · ¥680 단일 메뉴 · 옛날식 오코노미야키 · 키치한 인테리어 · 75-533-0001</p>
+                </a>
+                <div class="glass rounded-xl p-3">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">우동·소바</span>
+                    <p class="text-xs font-bold text-white">가와라마치 · 하나미코지 노포</p>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-1">교토 골목의 우동·소바 노포</p>
+                </div>
+                <div class="glass rounded-xl p-3">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-food px-2 py-0.5 rounded-md text-[10px]">카이세키</span>
+                    <p class="text-xs font-bold text-white">Gion Owatari 등</p>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-1">회덮밥 · 카이세키 점심 코스 ¥3,000~</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 저녁 -->
+          <!-- 15:00 야사카·마루야마 -->
           <div class="reveal relative">
             <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:city-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
+              <iconify-icon icon="solar:trees-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-wisteria-400">저녁</span>
-                <span class="text-xs text-slate-500">우메다 스카이빌딩</span>
+                <span class="text-sm font-bold text-wisteria-400">15:00</span>
+                <span class="text-xs text-slate-500">야사카 신사 + 마루야마 공원 산책</span>
               </div>
-              <p class="text-sm text-slate-300"><strong class="text-white">우메다 스카이빌딩 공중정원 전망대</strong>에서 오사카 야경 감상. 우메다에서 저녁 식사 후 미도스지선으로 호텔 복귀.</p>
+              <p class="text-sm text-slate-300"><strong class="text-sakura-300">5월 신록 베스트</strong> · 한적한 산책로</p>
+            </div>
+          </div>
+
+          <!-- 16:30 니시키시장 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:shop-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-sm font-bold text-koi-400">16:30</span>
+                <span class="text-xs text-slate-500">니시키 시장 간식 (1시간)</span>
+              </div>
+              <p class="text-sm text-slate-300 mb-3">교토의 부엌, 400년 전통 시장</p>
+              <div class="grid sm:grid-cols-2 gap-2">
+                <div class="glass rounded-xl p-3">
+                  <p class="text-xs font-bold text-white">🍡 타고 タコ寅</p>
+                  <p class="text-[11px] text-slate-400 mt-1">타코타마고 (작은 문어 + 메추리알), 시장 명물</p>
+                </div>
+                <div class="glass rounded-xl p-3">
+                  <p class="text-xs font-bold text-white">🍡 모치쇼 카네야</p>
+                  <p class="text-[11px] text-slate-400 mt-1">100년 노포 모찌 디저트</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 17:30 우메다 환승 -->
+          <div class="reveal relative">
+            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+              <iconify-icon icon="solar:branching-paths-up-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
+            </div>
+            <div class="glass-card rounded-2xl p-5 sm:p-6">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-sakura-400">17:30</span>
+                <span class="text-xs text-slate-500">가와라마치 → 한큐 교토선 → 우메다</span>
+                <span class="ml-auto px-2 py-0.5 rounded-md text-[10px] bg-koi-500/15 text-koi-400 border border-koi-400/20">분기점</span>
+              </div>
+              <p class="text-sm text-slate-300">45분 · ¥400 · <strong class="text-koi-300">17:30 환승 직전 체력 보고 코스 결정</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🌙 저녁 분기 -->
+      <div class="reveal max-w-5xl mx-auto mt-16">
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-koi-300 mb-3">
+            <iconify-icon icon="solar:moon-stars-bold-duotone"></iconify-icon>
+            저녁 분기 — 체력 보고 선택
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white">A vs B</h3>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-6">
+          <!-- 🟢 우메다 야경 코스 -->
+          <div class="glass-card rounded-3xl p-6 sm:p-7 card-hover glow-koi">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-green-500/15 flex items-center justify-center">
+                <iconify-icon icon="solar:city-bold-duotone" class="text-2xl text-green-400"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-green-400">Plan A · 체력 OK</p>
+                <h3 class="text-lg font-bold text-white">우메다 야경 코스</h3>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-xs font-bold text-koi-400">18:30</span>
+                  <span class="text-[11px] text-slate-500">우메다 도착</span>
+                </div>
+                <p class="text-xs text-slate-300"><strong class="text-white">우메다 스카이빌딩 공중정원</strong> 야경 (¥2,000, 22:30 마감)</p>
+              </div>
+
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs font-bold text-koi-400">19:30</span>
+                  <span class="text-[11px] text-slate-500">우메다 저녁 (택1)</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="rounded-lg p-3 bg-red-500/5 border border-red-400/15">
+                    <p class="text-xs font-bold text-red-300 mb-1">⚠️ 키지 신우메다식당가 본점</p>
+                    <p class="text-[11px] text-slate-400">일요일 휴무 — 5/10 ❌ 오코노미야키 욕구는 Day 1 미즈노로 해결</p>
+                  </div>
+                  <a href="https://www.skybldg.co.jp/ko/cafeshop/" target="_blank" rel="noopener" class="block rounded-lg p-3 bg-white/3 hover:bg-white/5 transition">
+                    <p class="text-xs font-bold text-white">🍴 Café SKY 40</p>
+                    <p class="text-[11px] text-slate-400 mt-1">스카이빌딩 40층 · 10:00~19:30 · 야경+식사 · <strong class="text-koi-300">18:30 도착 권장</strong></p>
+                  </a>
+                  <div class="rounded-lg p-3 bg-white/3">
+                    <p class="text-xs font-bold text-white">🍴 한큐 백화점 본점 17층 식당가</p>
+                    <p class="text-[11px] text-slate-400 mt-1">라멘·텐동·스시 다양 · 일요일 영업</p>
+                  </div>
+                  <div class="rounded-lg p-3 bg-white/3">
+                    <p class="text-xs font-bold text-white">🍴 그랜드프론트 6층 우메키타 셀라</p>
+                    <p class="text-[11px] text-slate-400 mt-1">와인 + 이탈리안</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-xs font-bold text-koi-400">22:00</span>
+                  <span class="text-[11px] text-slate-500">호텔 복귀</span>
+                </div>
+                <p class="text-xs text-slate-300">미도스지선으로 호텔 복귀</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔴 호텔 직행 코스 -->
+          <div class="glass-card rounded-3xl p-6 sm:p-7 card-hover glow-sakura">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-12 h-12 rounded-2xl bg-red-500/15 flex items-center justify-center">
+                <iconify-icon icon="solar:bed-bold-duotone" class="text-2xl text-red-400"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-red-400">Plan B · 체력 부족</p>
+                <h3 class="text-lg font-bold text-white">호텔 직행 코스</h3>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-slate-400 mb-3 italic">USJ 컨디션 최우선</p>
+
+            <div class="space-y-3">
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-xs font-bold text-sakura-400">18:30</span>
+                  <span class="text-[11px] text-slate-500">우메다 환승</span>
+                </div>
+                <p class="text-xs text-slate-300">미도스지선 → <strong class="text-white">19:00 호텔 도착</strong></p>
+              </div>
+
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="text-xs font-bold text-sakura-400">19:30</span>
+                  <span class="text-[11px] text-slate-500">도톤보리 저녁 (호텔 도보권, 택1)</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="rounded-lg p-3 bg-white/3">
+                    <p class="text-xs font-bold text-white">🍴 카니도라쿠 도톤보리 본점</p>
+                    <p class="text-[11px] text-slate-400 mt-1">Day 1에 안 갔을 시</p>
+                  </div>
+                  <div class="rounded-lg p-3 bg-white/3">
+                    <p class="text-xs font-bold text-white">🍴 스시 자나마이 도톤보리</p>
+                    <p class="text-[11px] text-slate-400 mt-1">회전 스시 · 24시간</p>
+                  </div>
+                  <div class="rounded-lg p-3 bg-white/3">
+                    <p class="text-xs font-bold text-white">🍴 마구로야 도톤보리 분점</p>
+                    <p class="text-[11px] text-slate-400 mt-1">참치회덮밥 (쿠로몬 본점 분점)</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="text-xs font-bold text-sakura-400">21:00 → 21:30</span>
+                  <span class="text-[11px] text-slate-500">호텔 휴식 → 취침</span>
+                </div>
+                <p class="text-xs text-slate-300"><strong class="text-koi-300">USJ 06:30 기상 대비 일찍 자기</strong></p>
+              </div>
             </div>
           </div>
         </div>
@@ -615,6 +1464,17 @@
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 3 — USJ</h2>
         <p class="text-lg text-slate-400">유니버설 스튜디오 재팬 25주년 종일 공략</p>
         <p class="text-sm text-slate-500 mt-2">익스프레스 패스 7 세션1 · 히포그리프 11:10 / SNW 17:10</p>
+      </div>
+
+      <!-- 미니맵 -->
+      <div class="reveal max-w-md mx-auto mb-12">
+        <div class="illust-frame" data-lightbox-src="day3.png" data-lightbox-caption="Day 3 · 5/11 월 — USJ 종일">
+          <div class="illust-zoom-hint">
+            <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+          </div>
+          <img src="day3.png" alt="Day 3 미니맵 — USJ 종일" loading="lazy" />
+        </div>
+        <p class="text-[11px] text-slate-500 text-center mt-3">손그림 미니맵 · 클릭해서 크게 보기</p>
       </div>
 
       <!-- USJ 핵심 정보 카드 -->
@@ -1372,95 +2232,210 @@
     <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-wisteria-500/4 rounded-full blur-[120px]"></div>
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- 섹션 헤더 -->
-      <div class="reveal text-center mb-16">
+      <div class="reveal text-center mb-12">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-slate-300 mb-4">
           <iconify-icon icon="solar:calendar-date-bold-duotone" class="text-base"></iconify-icon>
           5월 12일 화요일
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Day 4</h2>
-        <p class="text-lg text-slate-400">출발일</p>
+        <p class="text-lg text-slate-400">출국 — 12:10 ZE612 → 14:00 인천</p>
       </div>
 
-      <div class="max-w-3xl mx-auto">
-        <div class="relative pl-16 md:pl-20 space-y-8">
-          <div class="timeline-line"></div>
+      <!-- 미니맵 -->
+      <div class="reveal max-w-md mx-auto mb-12">
+        <div class="illust-frame" data-lightbox-src="day4.png" data-lightbox-caption="Day 4 · 5/12 화 — 출국">
+          <div class="illust-zoom-hint">
+            <iconify-icon icon="solar:magnifer-zoom-in-bold" class="text-base"></iconify-icon>
+          </div>
+          <img src="day4.png" alt="Day 4 미니맵 — 출국" loading="lazy" />
+        </div>
+        <p class="text-[11px] text-slate-500 text-center mt-3">손그림 미니맵 · 클릭해서 크게 보기</p>
+      </div>
 
-          <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:moon-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
-            </div>
-            <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-wisteria-400">전날 밤</span>
+      <!-- 사전 안내 -->
+      <div class="reveal max-w-3xl mx-auto mb-10 glass-strong rounded-2xl p-5 border border-wisteria-400/20">
+        <div class="flex items-start gap-3">
+          <iconify-icon icon="solar:moon-bold-duotone" class="text-wisteria-400 text-2xl flex-shrink-0 mt-0.5"></iconify-icon>
+          <div>
+            <p class="text-sm font-bold text-white mb-1">전날 밤에 짐 정리 완료</p>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              <strong class="text-wisteria-300">12:10</strong> 간사이공항 출발 (ZE612) → <strong class="text-wisteria-300">14:00</strong> 인천 도착. 모닝 옵션 두 가지 중 선택.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 모닝 옵션 분기 -->
+      <div class="reveal text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-koi-300 mb-3">
+          <iconify-icon icon="solar:branching-paths-up-bold-duotone"></iconify-icon>
+          모닝 옵션 분기
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black text-white">A vs B</h3>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <!-- 옵션 1: 편의점·카페 모닝 (기본) -->
+        <div class="reveal glass-card rounded-3xl p-6 sm:p-7 card-hover glow-wisteria">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-green-500/15 flex items-center justify-center">
+                <iconify-icon icon="solar:cup-hot-bold-duotone" class="text-2xl text-green-400"></iconify-icon>
               </div>
-              <p class="text-sm text-slate-300">짐 정리 완료해둘 것</p>
+              <div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-green-400">Option 1 · 기본</p>
+                <h3 class="text-lg font-bold text-white">편의점 · 카페 모닝</h3>
+              </div>
             </div>
+            <span class="px-2 py-1 rounded-md text-[10px] bg-green-500/15 text-green-400 border border-green-400/20">⭐ 추천</span>
           </div>
 
-          <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:sun-2-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
-            </div>
-            <div class="glass-card rounded-2xl p-5 sm:p-6">
+          <p class="text-[11px] text-slate-400 mb-4 italic">간단 · 안전 · 시간 여유</p>
+
+          <div class="space-y-3">
+            <div class="glass rounded-xl p-4">
               <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-koi-400">07:00</span>
-                <span class="text-xs text-slate-500">기상</span>
+                <span class="text-xs font-bold text-koi-400">07:30</span>
+                <span class="text-[11px] text-slate-500">기상</span>
               </div>
-              <p class="text-sm text-slate-300">근처 편의점 또는 카페에서 아침 (호텔 조식 미포함)</p>
+              <div class="space-y-1.5">
+                <p class="text-xs text-slate-300">☕ 호시노커피 도톤보리점 (7시 오픈, 모닝 세트)</p>
+                <p class="text-xs text-slate-300">☕ 세븐일레븐 / 패밀리마트 (24시간, 오니기리·샌드위치)</p>
+              </div>
             </div>
+            <div class="glass rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-koi-400">08:00</span>
+                <span class="text-[11px] text-slate-500">호텔 체크아웃</span>
+              </div>
+            </div>
+            <div class="glass rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-koi-400">08:15</span>
+                <span class="text-[11px] text-slate-500">난바역 출발</span>
+              </div>
+              <p class="text-xs text-slate-300"><strong class="text-white">난카이 공항급행</strong> · ¥970 · 약 50분</p>
+            </div>
+            <div class="glass rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-koi-400">09:05</span>
+                <span class="text-[11px] text-slate-500">간사이공항 도착</span>
+              </div>
+              <p class="text-xs text-slate-300">출국 수속 + 면세점 · <strong class="text-green-400">3시간 5분 여유, 충분</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 옵션 2: 쿠로몬 시장 모닝 -->
+        <div class="reveal reveal-delay-1 glass-card rounded-3xl p-6 sm:p-7 card-hover glow-koi">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-2xl bg-koi-500/15 flex items-center justify-center">
+                <iconify-icon icon="solar:fish-bold-duotone" class="text-2xl text-koi-400"></iconify-icon>
+              </div>
+              <div>
+                <p class="text-[10px] font-bold tracking-widest uppercase text-koi-400">Option 2 · 미식</p>
+                <h3 class="text-lg font-bold text-white">쿠로몬 시장 모닝</h3>
+              </div>
+            </div>
+            <span class="px-2 py-1 rounded-md text-[10px] bg-red-500/15 text-red-400 border border-red-400/20">시간 빡빡</span>
           </div>
 
-          <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:logout-2-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
-            </div>
-            <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-sakura-400">08:00</span>
-                <span class="text-xs text-slate-500">체크아웃</span>
-              </div>
-              <p class="text-sm text-slate-300">11:00까지 가능하지만 비행기 시간상 일찍 출발</p>
-            </div>
+          <div class="rounded-lg p-3 bg-red-500/5 border border-red-400/15 mb-4">
+            <p class="text-[11px] text-slate-300 leading-relaxed">
+              ⚠️ 쿠로몬 시장 가게는 <strong class="text-red-300">9~9:30에야 오픈</strong> — 7시 도착하면 닫혀있음. 출발 시간을 늦춰야 함.
+            </p>
           </div>
 
-          <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:tram-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
-            </div>
-            <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-wisteria-400">08:15</span>
-                <span class="text-xs text-slate-500">난바역 출발</span>
+          <div class="space-y-3">
+            <div class="glass rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-sakura-400">08:30</span>
+                <span class="text-[11px] text-slate-500">기상 → 체크아웃</span>
               </div>
-              <p class="text-sm text-slate-300">난카이선 약 40~50분 → <strong class="text-white">09:05</strong> 간사이공항 도착</p>
+              <p class="text-xs text-slate-300">가방 프론트 보관</p>
             </div>
-          </div>
 
-          <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
-              <iconify-icon icon="solar:bag-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
-            </div>
-            <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-koi-400">09:05</span>
-                <span class="text-xs text-slate-500">간사이공항</span>
+            <a href="https://en.osaka-info.jp/spot/kuromon-market/" target="_blank" rel="noopener" class="block glass rounded-xl p-4 hover:bg-white/5 transition group">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs font-bold text-sakura-400">09:00</span>
+                <span class="text-[11px] text-slate-500">쿠로몬 시장 도착</span>
+                <iconify-icon icon="solar:link-round-angle-bold" class="text-slate-500 text-xs ml-auto group-hover:text-sakura-400"></iconify-icon>
               </div>
-              <p class="text-sm text-slate-300">출국 수속 + 면세점 쇼핑</p>
-            </div>
-          </div>
+              <p class="text-xs text-slate-300 mb-3">호텔에서 도보 10분</p>
+              <div class="space-y-2">
+                <div class="rounded-lg p-2.5 bg-white/3">
+                  <p class="text-xs font-bold text-white">🐟 마구로야 쿠로긴 본점 ⭐</p>
+                  <p class="text-[11px] text-slate-400 mt-0.5">9:30~16:30 · 마구로동 (참치회덮밥) · <strong class="text-red-300">현금만</strong> · 9:30 오픈 직후 진입</p>
+                </div>
+                <div class="rounded-lg p-2.5 bg-white/3">
+                  <p class="text-xs font-bold text-white">🐟 다이키 수산</p>
+                  <p class="text-[11px] text-slate-400 mt-0.5">9:00~ · 우니·가리비·새우 구이</p>
+                </div>
+                <div class="rounded-lg p-2.5 bg-white/3">
+                  <p class="text-xs font-bold text-white">🐟 Yamato Suisan / Uofuku / Seafood Kawasaki</p>
+                  <p class="text-[11px] text-slate-400 mt-0.5">홋카이도 우니·해산물덮밥 (9시 오픈)</p>
+                </div>
+                <div class="rounded-lg p-2.5 bg-red-500/5 border border-red-400/15">
+                  <p class="text-xs font-bold text-red-300">⚠️ 다코야키 와나카 쿠로몬 분점</p>
+                  <p class="text-[11px] text-slate-400 mt-0.5">분점 늦게 오픈, 모닝엔 비추</p>
+                </div>
+              </div>
+            </a>
 
-          <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
-              <iconify-icon icon="ph:airplane-tilt-bold" class="text-sakura-400 text-lg"></iconify-icon>
-            </div>
-            <div class="glass-card rounded-2xl p-5 sm:p-6">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="text-sm font-bold text-sakura-400">12:10</span>
-                <span class="text-xs text-slate-500">간사이공항 출발</span>
+            <div class="glass rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-sakura-400">10:00</span>
+                <span class="text-[11px] text-slate-500">호텔에서 짐 픽업</span>
               </div>
-              <p class="text-sm text-slate-300">이스타항공 ZE612 → <strong class="text-white">14:00</strong> 인천공항 도착</p>
+            </div>
+            <div class="glass rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-sakura-400">10:15</span>
+                <span class="text-[11px] text-slate-500">난바역 출발</span>
+              </div>
+              <p class="text-xs text-slate-300"><strong class="text-white">난카이 라피트 β</strong> · ¥1,450 · 약 40분 · <strong class="text-koi-300">좌석 지정 필수</strong></p>
+            </div>
+            <div class="glass rounded-xl p-4">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold text-sakura-400">10:55</span>
+                <span class="text-[11px] text-slate-500">간사이공항 도착</span>
+              </div>
+              <p class="text-xs text-slate-300">출국 수속 + 면세점 · <strong class="text-red-300">1시간 15분, 살짝 빡빡</strong></p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- 현실 체크 -->
+      <div class="reveal max-w-3xl mx-auto mt-8 glass rounded-2xl p-5">
+        <h4 class="text-sm font-bold text-koi-400 mb-3 flex items-center gap-2">
+          <iconify-icon icon="solar:lightbulb-bolt-bold-duotone"></iconify-icon>
+          현실 체크
+        </h4>
+        <ul class="space-y-2 text-xs text-slate-400">
+          <li class="flex items-start gap-2">
+            <iconify-icon icon="solar:check-circle-bold" class="text-green-400 mt-0.5 flex-shrink-0"></iconify-icon>
+            쿠로몬 모닝은 한 가게 정도만 가능 (마구로야 ⭐). 풀 미식 투어는 어려움 — 미식 욕구가 정말 강할 때만 옵션 2.
+          </li>
+          <li class="flex items-start gap-2">
+            <iconify-icon icon="solar:lightbulb-bold" class="text-koi-400 mt-0.5 flex-shrink-0"></iconify-icon>
+            쿠로몬을 풀로 즐기고 싶다면 — Day 1 14시 늦은 점심을 도톤보리 대신 쿠로몬에서 (호텔 도보 10분, 시장 9~17시 영업).
+          </li>
+        </ul>
+      </div>
+
+      <!-- 비행 -->
+      <div class="reveal max-w-3xl mx-auto mt-8">
+        <div class="glass-strong rounded-2xl p-5 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <iconify-icon icon="ph:airplane-tilt-bold" class="text-2xl text-sakura-400"></iconify-icon>
+            <div>
+              <p class="text-sm font-bold text-white">12:10 간사이 → 14:00 인천</p>
+              <p class="text-[11px] text-slate-400">이스타항공 ZE612</p>
+            </div>
+          </div>
+          <iconify-icon icon="solar:home-2-bold-duotone" class="text-2xl text-wisteria-400"></iconify-icon>
         </div>
       </div>
     </div>
@@ -1773,6 +2748,8 @@
         <div>
           <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">가이드</p>
           <div class="space-y-1.5">
+            <a href="#overview" class="block text-xs text-slate-500 hover:text-white transition">한눈에 보기 (미니맵)</a>
+            <a href="#checklist" class="block text-xs text-slate-500 hover:text-white transition">출발 전 체크리스트</a>
             <a href="#flight" class="block text-xs text-slate-500 hover:text-white transition">항공·숙소</a>
             <a href="#transport" class="block text-xs text-slate-500 hover:text-white transition">교통 가이드</a>
             <a href="#shopping" class="block text-xs text-slate-500 hover:text-white transition">쇼핑 가이드</a>
@@ -1785,6 +2762,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- ==================== Lightbox 모달 ==================== -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
+    <button class="lightbox-close" id="lightbox-close" aria-label="닫기">
+      <iconify-icon icon="solar:close-circle-bold" class="text-2xl"></iconify-icon>
+    </button>
+    <img id="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
 
   <!-- ==================== 자바스크립트 ==================== -->
   <script>
@@ -1858,6 +2844,33 @@
       });
     }, { threshold: 0.3 });
     sections.forEach(section => activeLinkObserver.observe(section));
+
+    // 라이트박스 (손그림 미니맵 확대 보기)
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    document.querySelectorAll('.illust-frame[data-lightbox-src]').forEach(frame => {
+      frame.addEventListener('click', () => {
+        lightboxImg.src = frame.dataset.lightboxSrc;
+        lightboxImg.alt = frame.dataset.lightboxCaption || '';
+        lightboxCaption.textContent = frame.dataset.lightboxCaption || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    };
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
   </script>
 
 </body>
