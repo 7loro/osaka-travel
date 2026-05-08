@@ -60,7 +60,7 @@
 
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Pretendard', system-ui, sans-serif; background: #0a0a1a; color: #e2e8f0; }
+    body { font-family: 'Pretendard', system-ui, sans-serif; background: #0a0a1a; color: #e2e8f0; overflow-x: hidden; }
 
     /* 글래스 모피즘 */
     .glass { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.06); }
@@ -91,7 +91,8 @@
     ::-webkit-scrollbar-thumb:hover { background: rgba(244, 114, 182, 0.5); }
 
     /* 타임라인 */
-    .timeline-line { position: absolute; left: 1.75rem; top: 2.5rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, rgba(244, 114, 182, 0.4), rgba(167, 139, 250, 0.2), transparent); }
+    .timeline-line { position: absolute; left: 1.375rem; top: 2.5rem; bottom: 0; width: 2px; background: linear-gradient(to bottom, rgba(244, 114, 182, 0.4), rgba(167, 139, 250, 0.2), transparent); }
+    @media (min-width: 640px) { .timeline-line { left: 1.75rem; } }
     @media (min-width: 768px) { .timeline-line { left: 2.25rem; } }
 
     /* 탭 */
@@ -222,7 +223,7 @@
           <a href="#shopping" class="nav-link hover:text-white">쇼핑</a>
           <a href="#tips" class="nav-link hover:text-white">팁</a>
         </div>
-        <button id="menu-btn" class="md:hidden text-white p-2" aria-label="메뉴 열기">
+        <button id="menu-btn" class="md:hidden text-white w-11 h-11 flex items-center justify-center -mr-2" aria-label="메뉴 열기">
           <iconify-icon icon="solar:hamburger-menu-line-duotone" class="text-xl"></iconify-icon>
         </button>
       </div>
@@ -262,7 +263,7 @@
       </div>
 
       <!-- 메인 타이틀 -->
-      <h1 class="reveal reveal-delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] mb-6">
+      <h1 class="reveal reveal-delay-1 text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05] mb-6">
         <span class="text-white">오사카</span><br />
         <span class="gradient-text">완벽 여행 가이드</span>
       </h1>
@@ -924,12 +925,12 @@
 
       <!-- 타임라인 -->
       <div class="max-w-3xl mx-auto">
-        <div class="relative pl-16 md:pl-20 space-y-8">
+        <div class="relative pl-12 sm:pl-16 md:pl-20 space-y-6 sm:space-y-8">
           <div class="timeline-line"></div>
 
           <!-- 09:15 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
               <iconify-icon icon="ph:airplane-bold" class="text-sakura-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -943,7 +944,7 @@
 
           <!-- 11:10 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:flag-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -957,7 +958,7 @@
 
           <!-- 13:00 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:buildings-2-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -971,7 +972,7 @@
 
           <!-- 14:00 — 늦은 점심 (택1) -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:chef-hat-heart-bold-duotone" class="text-green-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1007,7 +1008,7 @@
 
           <!-- 15:00 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:fire-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1026,7 +1027,7 @@
 
           <!-- 17:00 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:streets-map-point-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1040,7 +1041,7 @@
 
           <!-- 18:30 — 저녁 (택1) -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:moon-stars-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1078,7 +1079,7 @@
 
           <!-- 20:00 리버 크루즈 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:ship-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1092,7 +1093,7 @@
 
           <!-- 21:30 호젠지 요코초 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:wineglass-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1106,7 +1107,7 @@
 
           <!-- 22:00 호텔 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:bed-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1162,12 +1163,12 @@
 
       <!-- 타임라인 -->
       <div class="max-w-3xl mx-auto">
-        <div class="relative pl-16 md:pl-20 space-y-8">
+        <div class="relative pl-12 sm:pl-16 md:pl-20 space-y-6 sm:space-y-8">
           <div class="timeline-line"></div>
 
           <!-- 07:30 출발 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:tram-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1181,7 +1182,7 @@
 
           <!-- 08:15 후시미이나리 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:gate-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1203,7 +1204,7 @@
 
           <!-- 10:30 기요미즈 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:waterdrops-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1234,7 +1235,7 @@
 
           <!-- 13:30 기온 점심 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-green-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:chef-hat-heart-bold-duotone" class="text-green-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1271,7 +1272,7 @@
 
           <!-- 15:00 야사카·마루야마 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-wisteria-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:trees-bold-duotone" class="text-wisteria-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1285,7 +1286,7 @@
 
           <!-- 16:30 니시키시장 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-koi-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:shop-bold-duotone" class="text-koi-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1309,7 +1310,7 @@
 
           <!-- 17:30 우메다 환승 -->
           <div class="reveal relative">
-            <div class="absolute left-[-3.5rem] md:left-[-4.25rem] w-10 h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
+            <div class="absolute left-[-2.75rem] sm:left-[-3.5rem] md:left-[-4.25rem] w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-midnight border-2 border-sakura-400/40 flex items-center justify-center">
               <iconify-icon icon="solar:branching-paths-up-bold-duotone" class="text-sakura-400 text-lg"></iconify-icon>
             </div>
             <div class="glass-card rounded-2xl p-5 sm:p-6">
@@ -1529,8 +1530,8 @@
             </div>
           </div>
           <div class="glass-card rounded-2xl overflow-hidden">
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-sakura-400">06:30</p>
               </div>
               <div class="flex-1">
@@ -1538,8 +1539,8 @@
                 <p class="text-xs text-slate-400 mt-1">난바역 → JR 니시쿠조 경유 → 유니버설 시티역 (30~40분). 유니버설 시티워크에서 아침 식사.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-sakura-400">07:00</p>
               </div>
               <div class="flex-1">
@@ -1549,8 +1550,8 @@
                 <p class="text-xs text-slate-400 mt-1">공식 개장 1시간 전 도착. 실제로는 일찍 개장하는 경우 다수.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-sakura-400">07:00</p>
                 <p class="text-xs text-slate-500">~08:00</p>
               </div>
@@ -1562,8 +1563,8 @@
                 <p class="text-xs text-slate-400 mt-1">시간 지정 없음. 아침에 바로 사용. 짐은 무료 로커 보관 필수. USJ 최강 스릴 코스터!</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-sakura-400">08:00</p>
                 <p class="text-xs text-slate-500">~09:00</p>
               </div>
@@ -1575,8 +1576,8 @@
                 <p class="text-xs text-slate-400 mt-1">할리우드 드림 코스터의 주술회전 한정 오버레이. 아침이라 40~60분 대기.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-sakura-400">09:00</p>
                 <p class="text-xs text-slate-500">~09:40</p>
               </div>
@@ -1588,8 +1589,8 @@
                 <p class="text-xs text-slate-400 mt-1">USJ 오리지널 스피닝 코스터. 아침이라 30~50분 대기.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-sakura-400">09:40</p>
                 <p class="text-xs text-slate-500">~10:30</p>
               </div>
@@ -1616,8 +1617,8 @@
             </div>
           </div>
           <div class="glass-card rounded-2xl overflow-hidden">
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-wisteria-400">10:30</p>
                 <p class="text-xs text-slate-500">~11:10</p>
               </div>
@@ -1629,8 +1630,8 @@
                 <p class="text-xs text-slate-400 mt-1">시간 지정 없음. 격렬한 모션 — 멀미 유발 가능. 일본어 음성.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-wisteria-400">11:10</p>
                 <p class="text-xs text-slate-500">~11:40</p>
               </div>
@@ -1643,8 +1644,8 @@
                 <p class="text-xs text-slate-400 mt-1">익스프레스 패스 지정 시간. 가벼운 야외 코스터.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-green-400">11:40</p>
                 <p class="text-xs text-slate-500">~12:30</p>
               </div>
@@ -1671,8 +1672,8 @@
             </div>
           </div>
           <div class="glass-card rounded-2xl overflow-hidden">
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-koi-400">12:30</p>
                 <p class="text-xs text-slate-500">~14:00</p>
               </div>
@@ -1684,8 +1685,8 @@
                 <p class="text-xs text-slate-400 mt-1">익스프레스 미포함. 오후에 대기 짧음. 가족 친화적.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-koi-400">14:00</p>
                 <p class="text-xs text-slate-500">~15:00</p>
               </div>
@@ -1697,8 +1698,8 @@
                 <p class="text-xs text-slate-400 mt-1">시계탑의 회귀. 4D 시어터. 이타도리·후시구로 전투 초근접 체감. 별도 티켓 불필요.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-koi-400">15:00</p>
                 <p class="text-xs text-slate-500">~17:00</p>
               </div>
@@ -1724,8 +1725,8 @@
             </div>
           </div>
           <div class="glass-card rounded-2xl overflow-hidden">
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-red-400">17:10</p>
                 <p class="text-xs text-slate-500">~17:40</p>
               </div>
@@ -1738,8 +1739,8 @@
                 <p class="text-xs text-slate-400 mt-1">AR 고글 착용. 인터랙티브 게임 요소. USJ 인기 1위!</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-red-400">17:40</p>
                 <p class="text-xs text-slate-500">~18:10</p>
               </div>
@@ -1752,8 +1753,8 @@
                 <p class="text-xs text-slate-400 mt-1">가벼운 라이드 + SNW 전경. 편안하게 풍경 감상.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5 border-b border-white/5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5 border-b border-white/5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-red-400">18:10</p>
                 <p class="text-xs text-slate-500">~18:40</p>
               </div>
@@ -1766,8 +1767,8 @@
                 <p class="text-xs text-slate-400 mt-1">배럴 캐논 발사 + 트랙 점프. 가족 친화적이면서 스릴도 있음.</p>
               </div>
             </div>
-            <div class="usj-row flex items-start gap-4 p-4 sm:p-5">
-              <div class="flex-shrink-0 w-20 sm:w-24 text-right">
+            <div class="usj-row flex items-start gap-3 sm:gap-4 p-3 sm:p-5">
+              <div class="flex-shrink-0 w-16 sm:w-24 text-right">
                 <p class="text-sm font-bold text-koi-400">18:40~</p>
               </div>
               <div class="flex-1">
